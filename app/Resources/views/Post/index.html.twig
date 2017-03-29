@@ -1,0 +1,41 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Lista de Mensajes{% endblock %}
+
+{% block body%}
+    <table class="table table-responsive table-bordered table-striped">
+            <thead>
+                <tr class="table-active">
+                    <th>id</th><th>Título</th><th>Autor</th><th>Mensaje</th><th>Creado</th><th>Actualizado</th>
+                </tr>
+            </thead>
+            <tbody>
+
+        {% for p in posts %}
+            <tr>
+                <td>{{ p.id }} </td>
+                <td>{{ p.titulo }} </td>
+                <td>{{ p.author }}</td>
+                <td>{{ p.mensaje }} </td>
+                <td>{{ p.createdAt|date("d/m/Y H:i:s") }} </td>
+                <td>{{ p.updatedAt|date("d/m/Y H:i:s") }} </td>
+                {% if app.user == p.author %}
+                <td><a href="{{ path('app_post_update', {'id': p.id}) }}"> Actualizar </a></td>
+                <td><a href="{{ path('app_post_remove', {'id': p.id}) }}"> Borrar </a> </td>
+                {% endif %}
+            </tr>
+
+        {% endfor %}
+            </tbody>
+        <tr>
+            {% if is_granted('ROLE_USER') %}
+            <h4 xmlns="http://www.w3.org/1999/html">Nuevo Post</h4>
+                <form method="post" action="{{ path('app_post_insert') }}">
+                    <button class="btn-basic" type="submit" value="submit">Añadir</button>
+                </form>
+            {% endif %}
+        </tr>
+    </table><br>
+
+{% endblock %}
+

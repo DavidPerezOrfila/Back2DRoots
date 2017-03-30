@@ -96,16 +96,18 @@ class postController extends Controller
      */
     public function updateAction($id)
     {
-        $m = $this->getDoctrine()->getManager();
-        $repository = $m->getRepository('AppBundle:Post');
+        if ($this->isGranted('ROLE_USER')) {
+            $m = $this->getDoctrine()->getManager();
+            $repository = $m->getRepository('AppBundle:Post');
 
-        $post = $repository->find($id);
-        $form = $this->createForm(postType::class, $post);
+            $post = $repository->find($id);
+            $form = $this->createForm(postType::class, $post);
 
-        return $this->render(':Post:form.html.twig', [
-            'form' => $form->createView(),
-            'action' => $this->generateUrl('app_post_doUpdate', ['id' => $id])
-        ]);
+            return $this->render(':Post:form.html.twig', [
+                'form' => $form->createView(),
+                'action' => $this->generateUrl('app_post_doUpdate', ['id' => $id])
+            ]);
+        }
     }
 
     /**

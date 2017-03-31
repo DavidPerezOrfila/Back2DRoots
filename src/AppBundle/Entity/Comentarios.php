@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="comentarios")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ComentariosRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Comentarios
 {
@@ -29,6 +30,12 @@ class Comentarios
     private $texto;
 
     /**
+     * Un usuario tiene muchos comentarios.
+     * @ORM\ManyToOne(targetEntity="Trascastro\UserBundle\Entity\User", inversedBy="comentario")
+     */
+    protected $author;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="createdAt", type="datetime")
@@ -41,6 +48,13 @@ class Comentarios
      * @ORM\Column(name="updatedAt", type="datetime")
      */
     private $updatedAt;
+
+    public function __construct()
+    {
+
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = $this->createdAt;
+    }
 
 
     /**
@@ -104,14 +118,13 @@ class Comentarios
     /**
      * Set updatedAt
      *
-     * @param \DateTime $updatedAt
+     * @ORM\PreUpdate()
      *
      * @return Comentarios
      */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt()
     {
-        $this->updatedAt = $updatedAt;
-
+        $this->updatedAt = new \DateTime();
         return $this;
     }
 

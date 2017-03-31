@@ -43,6 +43,22 @@ class Comentarios
     private $createdAt;
 
     /**
+     * @return mixed
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param mixed $author
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+    }
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="updatedAt", type="datetime")

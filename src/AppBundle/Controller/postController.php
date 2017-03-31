@@ -99,8 +99,13 @@ class postController extends Controller
         if ($this->isGranted('ROLE_USER')) {
             $m = $this->getDoctrine()->getManager();
             $repository = $m->getRepository('AppBundle:Post');
-
+            ;
             $post = $repository->find($id);
+            $usuarioActual= $this->getUser()->getId();
+            $author= $post->getAuthor()->getId();
+            if($usuarioActual !== $author){
+                return $this->redirectToRoute('app_post_index');
+            }
             $form = $this->createForm(postType::class, $post);
 
             return $this->render(':Post:form.html.twig', [

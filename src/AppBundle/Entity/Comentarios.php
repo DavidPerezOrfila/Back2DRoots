@@ -31,7 +31,7 @@ class Comentarios
 
     /**
      * Un usuario tiene muchos comentarios.
-     * @ORM\ManyToOne(targetEntity="Trascastro\UserBundle\Entity\User", inversedBy="comentario")
+     * @ORM\ManyToOne(targetEntity="Trascastro\UserBundle\Entity\User", inversedBy="comentarios")
      */
     protected $author;
 

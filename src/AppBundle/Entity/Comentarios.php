@@ -154,4 +154,3 @@ class Comentarios
         return $this->updatedAt;
     }
 }
-

@@ -9,25 +9,22 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Form\ComentariosType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class ComentariosController extends Controller
 {
+
     /**
-     * @Route("/Comentarios", name="app_comentarios_index")
-     * @return \Symfony\Component\HttpFoundation\Response
+     *
      */
-    public function indexAction()
+    public function mostrarComentariosAction($id)
     {
-        $m = $this->getDoctrine()->getManager();
-        $repo = $m->getRepository('AppBundle:Comentarios');
-
-        $comentarios = $repo->findAll();
-
-        return $this->render(':Comentarios:index.html.twig',
-            [
-                'comentarios' => $comentarios,
-            ]
-        );
+        $comentario = New Comentarios();
+        $form = $this->createForm(ComentariosType::class, $comentario, ['action' => $this->generateUrl('app_comentario_new', ['id' => $id])]);
+        return $this->render('Comentarios/mostrarComentarios.html.twig',[
+            'form' => $form->createView(),
+        ]);
     }
 }

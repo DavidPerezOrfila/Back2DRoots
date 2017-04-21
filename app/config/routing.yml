@@ -9,3 +9,8 @@ post:
     resource: "@AppBundle/Controller/postController.php"
     type: annotation
 
+Comentarios:
+    resource: "@AppBundle/controller/ComentariosController.php"
+    type: annotation
+
+

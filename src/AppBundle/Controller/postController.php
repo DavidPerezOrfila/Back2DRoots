@@ -103,7 +103,7 @@ class postController extends Controller
             $post = $repository->find($id);
             $usuarioActual= $this->getUser()->getId();
             $author= $post->getAuthor()->getId();
-            if($usuarioActual !== $author){
+            if($usuarioActual !== $author ){
                 return $this->redirectToRoute('app_post_index');
             }
             $form = $this->createForm(postType::class, $post);

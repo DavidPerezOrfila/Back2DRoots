@@ -21,7 +21,7 @@
                 <td>{{ p.createdAt|date("d/m/Y H:i:s") }} </td>
                 <td>{{ p.updatedAt|date("d/m/Y H:i:s") }} </td>
                 {% if app.user or is_granted('ROLE_ADMIN') %}
-                    <td><a href="{{ path('app_comentario_new',{'id': p.id}) }}">Comentar Articulo</a></td>
+                    <td><a href="{{ path('app_comentarios_new',{'id': p.id}) }}">Comentar Articulo</a></td>
                 {% endif %}
                 {% if app.user == p.author %}
                 <td><a href="{{ path('app_post_update', {'id': p.id}) }}"> Actualizar </a></td>

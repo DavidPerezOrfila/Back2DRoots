@@ -3,16 +3,7 @@
 {% block body %}
     <div>
         <form method="post" action="{{ action }}" novalidate="novalidate"><!-- para evitar la validacion html5 -->
-            <div>
-                {{ dump (form.vars.value) }}
 
-                <ul>
-                    <!-- para mostrar los errores del formulario -->
-                    {% for error in form.vars.errors %}
-                        <li>{{ error.message }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
             <div>{{ form_label(form.texto) }}: {{ form_widget(form.texto) }}</div>
             {{ form_rest(form) }}
             <div>

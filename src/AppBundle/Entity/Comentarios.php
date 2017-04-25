@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Comentarios
+ * comentarios
  *
  * @ORM\Table(name="comentarios")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ComentariosRepository")

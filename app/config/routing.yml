@@ -8,5 +8,9 @@ app.index:
 post:
     resource: "@AppBundle/Controller/postController.php"
     type: annotation
+    prefix: /post
 
-
+comentarios:
+    resource: "@AppBundle/Controller/ComentariosController.php"
+    type: annotation
+    prefix: /post

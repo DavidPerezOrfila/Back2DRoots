@@ -7,7 +7,7 @@
     <table class="table table-responsive table-bordered table-striped">
             <thead>
                 <tr class="table-active">
-                    <th>id</th><th>Título</th><th>Autor</th><th>Mensaje</th><th>Creado</th><th>Actualizado</th>
+                    <th>id</th><th>Título</th><th>Autor</th><th>Mensaje</th><th>Creado</th><th>Actualizado</th><th>Comentarios</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,6 +23,9 @@
                 {% if app.user == p.author %}
                 <td><a href="{{ path('app_post_update', {'id': p.id}) }}"> Actualizar </a></td>
                 <td><a href="{{ path('app_post_remove', {'id': p.id}) }}"> Borrar </a> </td>
+                {% endif %}
+                {% if app.user or is_granted('ROLE_ADMIN') %}
+                <td><a href="{{ path('app') }}">Comentar</a></td>
                 {% endif %}
             </tr>
 

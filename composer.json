@@ -78,7 +78,7 @@
                 "database_host": "SYMFONY_DATABASE_HOST",
                 "database_password": "SYMFONY_DATABASE_PASSWORD"
 
-            }h
+            }
         }
     }
 }

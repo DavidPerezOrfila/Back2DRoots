@@ -25,7 +25,7 @@
                 <td><a href="{{ path('app_post_remove', {'id': p.id}) }}"> Borrar </a> </td>
                 {% endif %}
                 {% if app.user or is_granted('ROLE_ADMIN') %}
-                <td><a href="{{ path('app') }}">Comentar</a></td>
+
                 {% endif %}
             </tr>
 

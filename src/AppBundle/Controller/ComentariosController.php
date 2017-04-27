@@ -23,7 +23,7 @@ class ComentariosController extends Controller
 
 
     /**
-     * @Route("/CommentIndex/{id}", name="app_comentario_index")
+     * @Route("/CommentIndex/{id}", name="app_comentarios_index")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction($id)
@@ -79,10 +79,10 @@ class ComentariosController extends Controller
                 $m->persist($comentario);
                 $m->flush();
                 $this->addFlash('messages', 'Comentario creado');
-                return $this->redirectToRoute('app_comentario_mostrar', ['id' => $id]);
+                return $this->redirectToRoute('app_comentarios_index', ['id' => $id]);
             }
             $this->addFlash('messages', 'Review your form data');
-            return $this->render(':texto:form.html.twig',
+            return $this->render(':Comentarios:form.html.twig',
                 [
                     'form' => $form->createView(),
                     'action' => $this->generateUrl('app_comentarios_doCreate', ['id' => $id])
@@ -130,16 +130,16 @@ class ComentariosController extends Controller
             if ($form->isValid()) {
                 $m->flush();
                 $this->addFlash('messages', 'comentario actualizado');
-                return $this->redirectToRoute('app_comentarios_mostrar', ['id' => $comentario->getTexto()->getId()]);
+                return $this->redirectToRoute('app_comentarios_index', ['id' => $comentario->getTexto()->getId()]);
             }
             $this->addFlash('messages', 'Review your form');
-            return $this->render(':comentario:form.html.twig',
+            return $this->render(':Comentarios:form.html.twig',
                 [
                     'form'      => $form->createView(),
-                    'action'    => $this->generateUrl('app_comentario_doUpdate', ['id' => $id]),
+                    'action'    => $this->generateUrl('app_comentarios_doUpdate', ['id' => $id]),
                 ]
             );
-        } return $this->redirectToRoute('app_texto_index');
+        } return $this->redirectToRoute('app_post_index');
     }
     /**
      * @Route("/removeComment/{id}", name="app_comentario_remove")
@@ -153,7 +153,7 @@ class ComentariosController extends Controller
         $comentario = $repository->find($id);
         $m->remove($comentario);
         $m->flush();
-        return $this->redirectToRoute('app_comentarios_mostrar', ['id' => $comentario->getTexto()->getId()]);
+        return $this->redirectToRoute('app_comentarios_index', ['id' => $comentario->getTexto()->getId()]);
     }
 
 }

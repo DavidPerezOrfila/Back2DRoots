@@ -5,10 +5,9 @@
 
     {% for c in comentario %}
 
-        <div>
-            <span >{{ c.texto }}</span>
-            <span >{{ c.author }}</span>
-            <span>{{ c.post }}</span>
+        <br>
+            <span >{{ c.texto }}</span></br>
+            <b>Autor: </b><span >{{ c.author }}</span>
             <b>Comentario creado:</b><span>{{ c.updatedAt|date("d/m/y") }}</span>
             {% if (c.author == app.user) or (app.user == c.author) or is_granted('ROLE_ADMIN')%}
                 <span> <a class ="fi glyphicon glyphicon-remove" href="{{ path('app_comentarios_remove', {'id' : c.getId }) }}"></a></span><hr><br/>

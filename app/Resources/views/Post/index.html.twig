@@ -9,7 +9,7 @@
     {% if is_granted('ROLE_USER') %}
         <h4 xmlns="http://www.w3.org/1999/html">Nuevo Post</h4>
         <form method="post" action="{{ path('app_post_insert') }}">
-            <button class="btn-basic" type="submit" value="submit">Añadir</button>
+            <button class="btn-basic btn-sm" type="submit" value="submit">Añadir</button>
         </form>
     {% endif %}
     <div class="panel panel-default">

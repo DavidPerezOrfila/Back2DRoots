@@ -79,7 +79,7 @@ class ComentariosController extends Controller
                 $m->persist($comment);
                 $m->flush();
                 $this->addFlash('messages', 'Comentario creado');
-                return $this->redirectToRoute('app_comentarios_index', ['id' => $id]);
+                return $this->redirectToRoute('app_post_index', ['id' => $id]);
             }
             $this->addFlash('messages', 'Review your form data');
             return $this->render(':Comentarios:form.html.twig',

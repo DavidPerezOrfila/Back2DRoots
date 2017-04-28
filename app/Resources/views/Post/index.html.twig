@@ -4,13 +4,7 @@
 
 {% block body%}
 
-    <!--<table class="table table-responsive table-bordered table-striped">
-            <thead>
-                <tr class="table-active">
-                    <th>id</th><th>Título</th><th>Autor</th><th>Mensaje</th><th>Creado</th><th>Actualizado</th><th>Comentarios</th><th>Modificar</th><th>Eliminar</th>
-                </tr>
-            </thead>
-            <tbody>-->
+
 <div class="panel-group">
     {% if is_granted('ROLE_USER') %}
         <h4 xmlns="http://www.w3.org/1999/html">Nuevo Post</h4>
@@ -22,20 +16,20 @@
         <br class="panel-body">
         {% for p in posts %}
 
-                <td>{{ p.id }} </td>
+            <span>{{ p.id }} </span>
+            <span><b>Título: </b>{{ p.titulo }}</span>
+            <span><b>Autor: </b>{{ p.author }}</span>
+            <hr>
+            <span><b>Mensaje: </b></br>{{ p.mensaje}}</span><br>
 
-                <b>Título:</b><td>{{ p.titulo }} </td>
-
-                <b>Autor:</b><td>{{ p.author }}</td><hr><br/>
-
-                <b>Mensaje:</b><td>{{ p.mensaje}}</td></br>
-
+            <span><a class="btn-info btn-xs" href="{{ path('app_comentarios_new', {'id': p.id}) }}">Crear comentario</a></span>
+        </br><hr>
                 {{ render(controller('AppBundle:Comentarios:index', {'id': p.id})) }}
-                <td><a class="btn-info btn-xs" href="{{ path('app_comentarios_new', {'id': p.id}) }}">Crear comentario</a> <br></td>
 
-                <td>{{ p.createdAt|date("d/m/Y H:i:s") }} </td>
 
-                <td>{{ p.updatedAt|date("d/m/Y H:i:s") }} </td>
+                <b>Texto creado: </b><td>{{ p.createdAt|date("d/m/Y H:i:s") }} </td>
+
+                <b>Texto actualizado: </b><td>{{ p.updatedAt|date("d/m/Y H:i:s") }} </td>
 
                 {% if app.user == p.author or is_granted('ROLE_ADMIN') %}
 

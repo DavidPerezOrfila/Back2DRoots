@@ -19,16 +19,16 @@
         </form>
     {% endif %}
     <div class="panel panel-default">
-        <div class="panel-body">
+        <br class="panel-body">
         {% for p in posts %}
-            <br>
+
                 <td>{{ p.id }} </td>
 
-                <td>{{ p.titulo }} </td>
+                <b>Título:</b><td>{{ p.titulo }} </td>
 
-                <td>{{ p.author }}</td>
+                <b>Autor:</b><td>{{ p.author }}</td><hr><br/>
 
-                <td>{{ p.mensaje}}</td></br>
+                <b>Mensaje:</b><td>{{ p.mensaje}}</td></br>
 
                 {{ render(controller('AppBundle:Comentarios:index', {'id': p.id})) }}
                 <td><a class="btn-info btn-xs" href="{{ path('app_comentarios_new', {'id': p.id}) }}">Crear comentario</a> <br></td>

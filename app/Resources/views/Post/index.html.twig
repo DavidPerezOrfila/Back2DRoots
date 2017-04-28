@@ -4,43 +4,51 @@
 
 {% block body%}
 
-    <table class="table table-responsive table-bordered table-striped">
+    <!--<table class="table table-responsive table-bordered table-striped">
             <thead>
                 <tr class="table-active">
                     <th>id</th><th>Título</th><th>Autor</th><th>Mensaje</th><th>Creado</th><th>Actualizado</th><th>Comentarios</th><th>Modificar</th><th>Eliminar</th>
                 </tr>
             </thead>
-            <tbody>
-
+            <tbody>-->
+<div class="panel-group">
+    {% if is_granted('ROLE_USER') %}
+        <h4 xmlns="http://www.w3.org/1999/html">Nuevo Post</h4>
+        <form method="post" action="{{ path('app_post_insert') }}">
+            <button class="btn-basic" type="submit" value="submit">Añadir</button>
+        </form>
+    {% endif %}
+    <div class="panel panel-default">
+        <div class="panel-body">
         {% for p in posts %}
-            <tr>
+            <br>
                 <td>{{ p.id }} </td>
+
                 <td>{{ p.titulo }} </td>
+
                 <td>{{ p.author }}</td>
-                <td>{{ p.mensaje}}</td>
+
+                <td>{{ p.mensaje}}</td></br>
+
+                {{ render(controller('AppBundle:Comentarios:index', {'id': p.id})) }}
+                <td><a class="btn-info btn-xs" href="{{ path('app_comentarios_new', {'id': p.id}) }}">Crear comentario</a> <br></td>
+
                 <td>{{ p.createdAt|date("d/m/Y H:i:s") }} </td>
+
                 <td>{{ p.updatedAt|date("d/m/Y H:i:s") }} </td>
-                {% if app.user or is_granted('ROLE_ADMIN') %}
-                    <td><a href="{{ path('app_comentarios_new',{'id': p.id}) }}">Comentar Articulo</a></td>
-                {% endif %}
+
                 {% if app.user == p.author or is_granted('ROLE_ADMIN') %}
-                <td><a href="{{ path('app_post_update', {'id': p.id}) }}"> Actualizar </a></td>
-                <td><a href="{{ path('app_post_remove', {'id': p.id}) }}"> Borrar </a> </td>
+
+                        <td><a class="btn-warning btn-xs" href="{{ path('app_post_update', {'id': p.id}) }}"> Actualizar </a></td>
+
+                        <td><a class="btn-danger btn-xs" href="{{ path('app_post_remove', {'id': p.id}) }}"> Borrar </a> </td>
+
                 {% endif %}
-
-            </tr>
-
+                <hr><br/>
         {% endfor %}
-            </tbody>
-        <tr>
-            {% if is_granted('ROLE_USER') %}
-            <h4 xmlns="http://www.w3.org/1999/html">Nuevo Post</h4>
-                <form method="post" action="{{ path('app_post_insert') }}">
-                    <button class="btn-basic" type="submit" value="submit">Añadir</button>
-                </form>
-            {% endif %}
-        </tr>
-    </table><br>
-
+            </tr>
+        </div>
+    </div>
+</div>
 {% endblock %}
 

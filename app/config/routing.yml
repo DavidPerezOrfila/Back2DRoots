@@ -13,4 +13,4 @@ post:
 comentarios:
     resource: "@AppBundle/Controller/ComentariosController.php"
     type: annotation
-    prefix: /post
+    prefix: /Comment

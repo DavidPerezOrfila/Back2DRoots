@@ -188,4 +188,26 @@ class Post
 
         return $this;
     }
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Comentarios", mappedBy="post")
+     *
+     */
+    private $comentario;
+
+    /**
+     * @return mixed
+     */
+    public function getComentario()
+    {
+        return $this->comentario;
+    }
+    /**
+     * @param mixed $comment
+     */
+    public function setComentario($comentario)
+    {
+        $this->comentario = $comentario;
+    }
+
 }

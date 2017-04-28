@@ -1,16 +1,18 @@
-{% extends '::base.html.twig' %}
+
 
 {% block body %}
-    <div>
-        <form method="post" action="{{ action }}" novalidate="novalidate"><!-- para evitar la validacion html5 -->
+    <b>Comentarios</b></br>
 
-            <div>{{ form_label(form.texto) }}: {{ form_widget(form.texto) }}</div>
-            {{ form_rest(form) }}
-            <div>
-                <button class="btn-basic" type="submit" value="submit">Añadir</button>
-            </div>
+    {% for c in comentario %}
 
-
-        </form>
-    </div>
+        <div class ="row">
+            <span >{{ c.texto }}</span>
+            <span >{{ c.author }}</span>
+            <span>{{ c.post }}</span>
+            <span>{{ c.updatedAt|date("d/m/y") }}</span>
+            {% if (c.author == app.user) or (app.user == c.author) or is_granted('ROLE_ADMIN')%}
+                <span> <a class ="fi glyphicon glyphicon-remove" href="{{ path('app_comentarios_remove', {'id' : c.getId }) }}"></a></span>
+            {% endif %}
+        </div>
+    {% endfor %}
 {% endblock %}

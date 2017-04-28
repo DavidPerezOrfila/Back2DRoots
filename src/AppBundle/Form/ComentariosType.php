@@ -21,12 +21,10 @@ class ComentariosType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-
             ->add('texto')
-            ->add('submit', SubmitType::class, [
-                'label' => $options['submit_label'],
-            ])
-        ;
+            ->add('post');
+
+
     }
 
     public function configureOptions(OptionsResolver $resolver)

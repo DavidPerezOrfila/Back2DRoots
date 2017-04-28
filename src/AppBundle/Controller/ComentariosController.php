@@ -31,9 +31,9 @@ class ComentariosController extends Controller
         $m = $this->getDoctrine()->getManager();
         $repo = $m->getRepository('AppBundle:Comentarios');
         $repo2 = $m->getRepository('AppBundle:Post');
-        $post = $repo2->findOneBy();
+        $post = $repo2->findOneById($id);
         $postID = $post->getId();
-        $comentario = $repo->findBy(['Post'=>$postID]);
+        $comentario = $repo->findByPost($postID);
         return $this->render(':Comentarios:Comentarios.html.twig',
             [
                 'comentario' => $comentario,
@@ -64,19 +64,19 @@ class ComentariosController extends Controller
     public function doCreateAction(Request $request, $id)
     {
         if ($this->isGranted('ROLE_USER')) {
-            $comentario = new Comentarios();
-            $form = $this->createForm(ComentariosType::class, $comentario,
+            $comment = new Comentarios();
+            $form = $this->createForm(ComentariosType::class, $comment,
                 ['action' => $this->generateUrl('app_comentarios_doCreate',['id'=>$id])]);
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $user = $this->getUser();
-                $comentario->setAuthor($user);
+                $comment->setAuthor($user);
                 $m = $this->getDoctrine()->getManager();
                 $repository = $m->getRepository('AppBundle:Post');
                 $post = $repository->find($id);
-                $comentario->setTexto($post);
+                $comment->setPost($post->getId());
                 $m = $this->getDoctrine()->getManager();
-                $m->persist($comentario);
+                $m->persist($comment);
                 $m->flush();
                 $this->addFlash('messages', 'Comentario creado');
                 return $this->redirectToRoute('app_comentarios_index', ['id' => $id]);
@@ -99,11 +99,11 @@ class ComentariosController extends Controller
     {
         $m = $this->getDoctrine()->getManager();
         $repository = $m->getRepository('AppBundle:Comentarios');
-        $comentario = $repository->find($id);
+        $comment = $repository->find($id);
         $user = $this->getUser();
-        $userComment= $comentario->getAuthor();
+        $userComment= $comment->getAuthor();
         if($user->getId() === $userComment->getId() or ($user->getUsername() === "admin")){
-            $form = $this->createForm(ComentariosType::class, $comentario);
+            $form = $this->createForm(ComentariosType::class, $comment);
             return $this->render(':Comentarios:form.html.twig',
                 [
                     'form' => $form->createView(),
@@ -121,16 +121,16 @@ class ComentariosController extends Controller
     {
         $m          = $this->getDoctrine()->getManager();
         $repository = $m->getRepository('AppBundle:Comentario');
-        $comentario = $repository->find($id);
+        $comment = $repository->find($id);
         $user = $this->getUser();
-        $userComment= $comentario->getAuthor();
+        $userComment= $comment->getAuthor();
         if($user->getId() === $userComment->getId() or ($user->getUsername() === "admin")){
-            $form       = $this->createForm(ComentariosType::class, $comentario);
+            $form       = $this->createForm(ComentariosType::class, $comment);
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $m->flush();
                 $this->addFlash('messages', 'comentario actualizado');
-                return $this->redirectToRoute('app_comentarios_index', ['id' => $comentario->getTexto()->getId()]);
+                return $this->redirectToRoute('app_comentarios_index', ['id' => $comment->getTexto()->getId()]);
             }
             $this->addFlash('messages', 'Review your form');
             return $this->render(':Comentarios:form.html.twig',
@@ -142,18 +142,20 @@ class ComentariosController extends Controller
         } return $this->redirectToRoute('app_post_index');
     }
     /**
-     * @Route("/removeComment/{id}", name="app_comentario_remove")
+     * @Route("/removeComment/{id}", name="app_comentarios_remove")
      *@return \Symfony\Component\HttpFoundation\Response
      * @Security("has_role('ROLE_USER')")
      */
-    public function removeAction($id)
-    {
-        $m = $this->getDoctrine()->getManager();
-        $repository = $m->getRepository('AppBundle:Comentario');
-        $comentario = $repository->find($id);
-        $m->remove($comentario);
-        $m->flush();
-        return $this->redirectToRoute('app_comentarios_index', ['id' => $comentario->getTexto()->getId()]);
+    public function removeCommentAction(Comentarios $comment) {
+        $Post = $comment->getTexto();
+        if ($this->getUser() == $comment->getAuthor()){
+            $m = $this->getDoctrine()->getManager();
+            $m->remove($comment);
+            $m->flush();
+            return $this->redirectToRoute('app_post_index');
+        } else {
+            return $this->redirectToRoute('app_post_index');
+        }
     }
 
 }

@@ -35,6 +35,32 @@ class Comentarios
      */
     protected $author;
 
+
+    /**
+     * @var int
+     * @ORM\Column(name="postId", type="integer")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Post", inversedBy="comentario")
+     */
+    private $post;
+
+    /**
+     * @return int
+     */
+    public function getPost()
+    {
+        return $this->post;
+    }
+
+    /**
+     * @param int $post
+     */
+    public function setPost($post)
+    {
+        $this->post = $post;
+    }
+
+
+
     /**
      * @var \DateTime
      *
@@ -153,4 +179,5 @@ class Comentarios
     {
         return $this->updatedAt;
     }
+
 }

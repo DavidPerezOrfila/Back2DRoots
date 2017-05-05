@@ -5,25 +5,26 @@
 {% block body%}
 
 
-<div class="panel-group">
-    {% if is_granted('ROLE_USER') %}
-        <h4 xmlns="http://www.w3.org/1999/html">Nuevo Post</h4>
-        <form method="post" action="{{ path('app_post_insert') }}">
-            <button class="btn-basic btn-sm" type="submit" value="submit">Añadir</button>
-        </form>
-    {% endif %}
-    <div class="panel panel-default">
-        <br class="panel-body">
-        {% for p in posts %}
+    <div class="panel-group">
+        {% if is_granted('ROLE_USER') %}
 
-            <span>{{ p.id }} </span>
-            <span><b>Título: </b>{{ p.titulo }}</span>
-            <span><b>Autor: </b>{{ p.author }}</span>
-            <hr>
-            <span><b>Mensaje: </b></br>{{ p.mensaje}}</span><br>
+            <form method="post" action="{{ path('app_post_insert') }}">
+                <button class="btn-success btn-sm" type="submit" value="submit">Nuevo Post</button>
+            </form>
+        {% endif %}
+        <div class="panel panel-primary">
 
-            <span><a class="btn-info btn-xs" href="{{ path('app_comentarios_new', {'id': p.id}) }}">Crear comentario</a></span>
-        </br><hr>
+            {% for p in posts %}
+            <div class="panel-heading">
+                <span>{{ p.id }} </span>
+                <span><b>Título: </b>{{ p.titulo }}</span>
+                <span><b>Autor: </b>{{ p.author }}</span>
+            </div>
+                <div class="panel-body">
+                <span><b>Mensaje: </b></br>{{ p.mensaje}}</span><br>
+
+                <span><a class="btn-info btn-sm" href="{{ path('app_comentarios_new', {'id': p.id}) }}">Crear comentario</a></span>
+                </br><hr>
                 {{ render(controller('AppBundle:Comentarios:index', {'id': p.id})) }}
 
 
@@ -33,15 +34,16 @@
 
                 {% if app.user == p.author or is_granted('ROLE_ADMIN') %}
 
-                        <td><a class="btn-warning btn-xs" href="{{ path('app_post_update', {'id': p.id}) }}"> Actualizar </a></td>
+                    <td><a class="btn-warning btn-sm" href="{{ path('app_post_update', {'id': p.id}) }}"> Actualizar </a></td>
 
-                        <td><a class="btn-danger btn-xs" href="{{ path('app_post_remove', {'id': p.id}) }}"> Borrar </a> </td>
+                    <td><a class="btn-danger btn-sm" href="{{ path('app_post_remove', {'id': p.id}) }}"> Borrar </a> </td>
 
                 {% endif %}
+                </div>
                 <hr><br/>
-        {% endfor %}
+            {% endfor %}
             </tr>
         </div>
     </div>
-</div>
+    </div>
 {% endblock %}

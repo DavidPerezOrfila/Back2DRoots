@@ -1,11 +1,14 @@
 
 
 {% block body %}
-    <b>Comentarios</b>
 
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <b>Comentarios</b>
+        </div>
     {% for c in comentario %}
 
-        <div>
+        <div class="panel-body">
             <span >{{ c.texto }}</span></br>
             <b>Autor: </b><span >{{ c.author }}</span>
             <b>Comentario creado:</b><span>{{ c.updatedAt|date("d/m/y") }}</span>
@@ -13,6 +16,8 @@
                 <span> <a class ="fi glyphicon glyphicon-remove" href="{{ path('app_comentarios_remove', {'id' : c.getId }) }}"></a></span>
             {% endif %}
         </div>
-        <hr>
+
+
     {% endfor %}
+    </div>
 {% endblock %}

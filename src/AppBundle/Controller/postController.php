@@ -20,7 +20,7 @@ class postController extends Controller
 {
 
     /**
-     * @Route("/post", name="app_post_index")
+     * @Route("/", name="app_post_index")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()

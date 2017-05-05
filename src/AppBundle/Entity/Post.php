@@ -190,7 +190,7 @@ class Post
     }
     /**
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Comentarios", mappedBy="post")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Comentarios", mappedBy="post", cascade={"remove"})
      *
      */
     private $comentario;

@@ -43,6 +43,7 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
     form_themes:
+
         - 'form-templates/bootstrap_3_layout.html.twig'
         - 'VichUploaderBundle:Form:fields.html.twig'
 

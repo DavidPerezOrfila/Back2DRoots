@@ -30,7 +30,6 @@ class Post
 
     public function __construct()
     {
-
         $this->createdAt = new \DateTime();
         $this->updatedAt = $this->createdAt;
     }
@@ -191,7 +190,7 @@ class Post
     /**
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Comentarios", mappedBy="post", cascade={"remove"})
-     *
+     * @ORM\JoinColumn(name="postId", referencedColumnName="id", nullable=true)
      */
     private $comentario;
 
@@ -210,4 +209,28 @@ class Post
         $this->comentario = $comentario;
     }
 
+
+    /**
+     * Add comentario
+     *
+     * @param \AppBundle\Entity\Comentarios $comentario
+     *
+     * @return Post
+     */
+    public function addComentario(\AppBundle\Entity\Comentarios $comentario)
+    {
+        $this->comentario[] = $comentario;
+
+        return $this;
+    }
+
+    /**
+     * Remove comentario
+     *
+     * @param \AppBundle\Entity\Comentarios $comentario
+     */
+    public function removeComentario(\AppBundle\Entity\Comentarios $comentario)
+    {
+        $this->comentario->removeElement($comentario);
+    }
 }

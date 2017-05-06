@@ -1,23 +1,26 @@
-
-
 {% block body %}
 
     <div class="panel panel-success">
         <div class="panel-heading">
             <b>Comentarios</b>
         </div>
-    {% for c in comentario %}
+        {% for c in comentario %}
 
-        <div class="panel-body">
-            <span >{{ c.texto }}</span></br>
-            <b>Autor: </b><span >{{ c.author }}</span>
-            <b>Comentario creado:</b><span>{{ c.updatedAt|date("d/m/y") }}</span>
+            <div class="panel-body">
+                <span >{{ c.texto }}</span>
+            </br>
+            <b>Autor:
+            </b>
+            <span >{{ c.author }}</span>
+            <b>Comentario creado:</b>
+            <span>{{ c.updatedAt|date("d/m/y") }}</span>
             {% if (c.author == app.user) or (app.user == c.author) or is_granted('ROLE_ADMIN')%}
-                <span> <a class ="fi glyphicon glyphicon-remove" href="{{ path('app_comentarios_remove', {'id' : c.getId }) }}"></a></span>
+                <span>
+                    <a class="fi glyphicon glyphicon-remove" href="{{ path('app_comentarios_remove', {'id' : c.getId }) }}"></a>
+                </span>
             {% endif %}
         </div>
 
-
     {% endfor %}
-    </div>
+</div>
 {% endblock %}

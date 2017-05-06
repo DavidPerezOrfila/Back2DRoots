@@ -94,7 +94,6 @@ class Comentarios
 
     public function __construct()
     {
-
         $this->createdAt = new \DateTime();
         $this->updatedAt = $this->createdAt;
     }
@@ -180,5 +179,4 @@ class Comentarios
     {
         return $this->updatedAt;
     }
-
 }

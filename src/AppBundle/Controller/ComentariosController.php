@@ -8,14 +8,12 @@
 
 namespace AppBundle\Controller;
 
-
 use AppBundle\Entity\Comentarios;
 use AppBundle\Form\ComentariosType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-
 
 class ComentariosController extends Controller
 {
@@ -66,7 +64,7 @@ class ComentariosController extends Controller
         if ($this->isGranted('ROLE_USER')) {
             $comment = new Comentarios();
             $form = $this->createForm(ComentariosType::class, $comment,
-                ['action' => $this->generateUrl('app_comentarios_doCreate',['id'=>$id])]);
+                ['action' => $this->generateUrl('app_comentarios_doCreate', ['id'=>$id])]);
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $user = $this->getUser();
@@ -102,7 +100,7 @@ class ComentariosController extends Controller
         $comment = $repository->find($id);
         $user = $this->getUser();
         $userComment= $comment->getAuthor();
-        if($user->getId() === $userComment->getId() or ($user->getUsername() === "admin")){
+        if ($user->getId() === $userComment->getId() or ($user->getUsername() === "admin")) {
             $form = $this->createForm(ComentariosType::class, $comment);
             return $this->render(':Comentarios:form.html.twig',
                 [
@@ -110,7 +108,8 @@ class ComentariosController extends Controller
                     'action' => $this->generateUrl('app_comentarios_doUpdate', ['id' => $id])
                 ]
             );
-        }return $this->redirectToRoute('app_post_index');
+        }
+        return $this->redirectToRoute('app_post_index');
     }
     /**
      * @Route("/CommentDoUpdate/{id}", name="app_comentarios_doUpdate")
@@ -124,7 +123,7 @@ class ComentariosController extends Controller
         $comment = $repository->find($id);
         $user = $this->getUser();
         $userComment= $comment->getAuthor();
-        if($user->getId() === $userComment->getId() or ($user->getUsername() === "admin")){
+        if ($user->getId() === $userComment->getId() or ($user->getUsername() === "admin")) {
             $form       = $this->createForm(ComentariosType::class, $comment);
             $form->handleRequest($request);
             if ($form->isValid()) {
@@ -139,16 +138,18 @@ class ComentariosController extends Controller
                     'action'    => $this->generateUrl('app_comentarios_doUpdate', ['id' => $id]),
                 ]
             );
-        } return $this->redirectToRoute('app_post_index');
+        }
+        return $this->redirectToRoute('app_post_index');
     }
     /**
      * @Route("/removeComment/{id}", name="app_comentarios_remove")
      *@return \Symfony\Component\HttpFoundation\Response
      * @Security("has_role('ROLE_USER')")
      */
-    public function removeCommentAction(Comentarios $comment) {
+    public function removeCommentAction(Comentarios $comment)
+    {
         $Post = $comment->getTexto();
-        if ($this->getUser() == $comment->getAuthor()){
+        if ($this->getUser() == $comment->getAuthor()) {
             $m = $this->getDoctrine()->getManager();
             $m->remove($comment);
             $m->flush();
@@ -157,5 +158,4 @@ class ComentariosController extends Controller
             return $this->redirectToRoute('app_post_index');
         }
     }
-
 }

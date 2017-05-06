@@ -4,6 +4,7 @@
 
 {% block body%}
 
+
     <div class="panel-group">
         {% if is_granted('ROLE_USER') %}
 
@@ -11,61 +12,37 @@
                 <button class="btn-success btn-sm" type="submit" value="submit">Nuevo Post</button>
             </form>
         {% endif %}
+        <br>
         <div class="panel panel-primary">
 
             {% for p in posts %}
-                <div class="panel-heading">
-                    <span>{{ p.id }}
-                    </span>
-                    <span>
-                        <b>Título:
-                        </b>{{ p.titulo }}</span>
-                    <span>
-                        <b>Autor:
-                        </b>{{ p.author }}</span>
-                </div>
+            <div class="panel-heading">
+                <span>{{ p.id }} </span>
+                <span><b>Título: </b>{{ p.titulo }}</span>
+                <span><b>Autor: </b>{{ p.author }}</span>
+            </div>
                 <div class="panel-body">
-                    <span>
-                        <b>Mensaje:
-                        </b>
-                    </br>{{ p.mensaje}}</span><br><hr>
-                <div <a class="btn-group" <span> class="btn-info btn-sm" href="{{ path('app_comentarios_new', {'id': p.id}) }}">Crear comentario</a>
-            </span>
-            {% if app.user == p.author or is_granted('ROLE_ADMIN') %}
+                <span><b>Mensaje: </b></br>{{ p.mensaje}}</span>
+                    <hr>
+                    <b>Texto creado: </b><span>{{ p.createdAt|date("d/m/Y H:i:s") }} </span>
+                    <b>Texto actualizado: </b><span>{{ p.updatedAt|date("d/m/Y H:i:s") }} </span>
+                    <hr>
 
-                <td>
-                    <a class="btn-warning btn-sm" href="{{ path('app_post_update', {'id': p.id}) }}">
-                        Actualizar
-                    </a>
-                </td>
+                <span><a class="btn-info btn-sm" href="{{ path('app_comentarios_new', {'id': p.id}) }}">Crear comentario</a></span>
+                {% if app.user == p.author or is_granted('ROLE_ADMIN') %}
 
-                <td>
-                    <a class="btn-danger btn-sm" href="{{ path('app_post_remove', {'id': p.id}) }}">
-                        Borrar
-                    </a>
-                </td>
+                    <span><a class="btn-warning btn-sm" href="{{ path('app_post_update', {'id': p.id}) }}"> Actualizar </a></span>
 
-            {% endif %}
+                    <span><a class="btn-danger btn-sm" href="{{ path('app_post_remove', {'id': p.id}) }}"> Borrar </a> </span>
+
+                {% endif %}
+                </br><hr>
+                {{ render(controller('AppBundle:Comentarios:index', {'id': p.id})) }}
+
+                </div>
+            {% endfor %}
+            </tr>
         </div>
-        <hr>
-
-        {{ render(controller('AppBundle:Comentarios:index', {'id': p.id})) }}<hr>
-
-        <b>Texto creado:
-        </b>
-        <td>{{ p.createdAt|date("d/m/Y H:i:s") }}
-        </td>
-        <b>Texto actualizado:
-        </b>
-        <td>{{ p.updatedAt|date("d/m/Y H:i:s") }}
-        </td>
-
     </div>
-</div>
-
-{% endfor %}
-</tr>
-</div>
-</div>
-</div>
+    </div>
 {% endblock %}

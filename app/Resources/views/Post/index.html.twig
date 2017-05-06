@@ -17,12 +17,11 @@
 
             {% for p in posts %}
             <div class="panel-heading">
-                <span>{{ p.id }} </span>
-                <span><b>Título: </b>{{ p.titulo }}</span>
-                <span><b>Autor: </b>{{ p.author }}</span>
+                <h3 class="panel-title"><b>{{ p.titulo }}</b></h3>
+                <span><b>Autor: </b><i>{{ p.author }}</i></span>
             </div>
                 <div class="panel-body">
-                <span><b>Mensaje: </b></br>{{ p.mensaje}}</span>
+                <span>{{ p.mensaje}}</span>
                     <hr>
                     <b>Texto creado: </b><span>{{ p.createdAt|date("d/m/Y H:i:s") }} </span>
                     <b>Texto actualizado: </b><span>{{ p.updatedAt|date("d/m/Y H:i:s") }} </span>

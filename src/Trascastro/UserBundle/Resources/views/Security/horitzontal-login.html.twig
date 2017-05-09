@@ -1,6 +1,7 @@
 {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-    <a class="btn btn-success" href="{{ path('fos_user_security_logout') }}">Sign out</a>
-    <a class="btn btn-danger" href="{{ path('fos_user_profile_show') }}">{{ app.user.username }}</a>
+      <a class="btn btn-success" href="{{ path('fos_user_security_logout') }}">Sign out</a>
+      <a class="btn btn-warning" href="{{ path('fos_user_profile_edit') }}">Edit profile</a>
+      <a class="btn btn-danger" href="{{ path('fos_user_profile_show') }}">{{ app.user.username }}</a>
 {% elseif route != 'fos_user_security_login' and route != 'fos_user_registration_register' %}
     <form action="{{ path("fos_user_security_check") }}" method="post">
         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">

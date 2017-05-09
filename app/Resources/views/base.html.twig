@@ -9,7 +9,7 @@
         <meta name="author" content="">
 
         <title>
-            {% block title %}{% endblock %}
+            {% block title %}Back2DRoots{% endblock %}
         </title>
 
         {% block stylesheets %}
@@ -42,10 +42,9 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li></li>
-                        <li><a class="navbar-brand" href="{{ path('app_post_index') }}"><span class="glyphicon glyphicon-home"></span> Home</a>&nbsp;</li>
-                        <li><a class="navbar-brand" href="#"><span><img src="/icons/blinky.png"></span> GamesF</a>&nbsp;</li>
-                        <li><a class="navbar-brand" href="{{render(url('Games'))}}"><span><img src="/icons/blinky.png"></span> Games</a>&nbsp;</li>
+                        <li class="nav-item"><a class="navbar-brand" href="{{ path('app_post_index') }}"><span class="glyphicon glyphicon-home"></span> Home</a>&nbsp;</li>
+                        <li class="nav-item"><a class="navbar-brand" href="#"><span><img src="/icons/blinky.png"></span> Usuarios</a>&nbsp;</li>
+                        <li class="nav-item"><a class="navbar-brand" href="#"><span><img src="/icons/inky.png"></span> Games</a>&nbsp;</li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
@@ -67,19 +66,19 @@
             </ul>
         </div>
 
-        <div class="container">
-            <div class="margin-bottom-md"></div>
+        <div class="container-fluid">
+            <div class="margin-bottom-md">
             <div class="row">
-                <div class="col-sm-8 col-md-8 col-lg-8">
+                <div class="col-sm-7 col-md-7 col-lg-7">
                     {% block body %}
                         {% include var ~ 'Post/index.html.twig' %}
                     {% endblock %}
                 </div>
-                <div class="col-sm-4 col-md-4 col-lg-4">
+                <div class="col-sm-5 col-md-5 col-lg-5">
                     {% block sidebar %}
                         <div class="container-fluid">
                             <div class="row margin-bottom-md">
-                                <div class="col-md-12">
+                                <div class="col-sm-12 col-md-12 col-lg-12">
 
                                     <a class="btn btn-default" style="font-size:x-large;width: 100%" href="">Sidebar</a>
                                 </div>
@@ -89,7 +88,7 @@
                     {% endblock %}
                 </div>
             </div>
-            <hr>
+            </div>
             <footer>
                 <p class="text-right">&copy; 2017 David Pérez</p>
             </footer>

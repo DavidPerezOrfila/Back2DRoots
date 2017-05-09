@@ -190,9 +190,9 @@ class Post
     /**
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Comentarios", mappedBy="post", cascade={"remove"})
-     * @ORM\JoinColumn(name="postId", referencedColumnName="id", nullable=true)
+     * @ORM\JoinColumn(name="postId", referencedColumnName="id")
      */
-    private $comentario;
+    protected $comentario;
 
     /**
      * @return mixed

@@ -21,6 +21,10 @@
 }
 
 .navbar-inverse .navbar-header .navbar-brand {
+    color: #DDD;
+}
+
+.navbar-inverse .navbar-collapse .navbar-brand {
     color: #f0ad4e;
 }
 

@@ -2,8 +2,8 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <meta name="description" content="">
         <meta name="author" content="">
@@ -27,7 +27,7 @@
 
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>
@@ -35,14 +35,17 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{ path('app_post_index') }}">Back2DRoots</a>
+                    <a class="navbar-brand" href="#"><span><img src="/icons/joystick.png" width="30" height="30" alt="" ></span>Back2DRoots</a>&nbsp;
+
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li></li>
-                        <li></li>
+                        <li><a class="navbar-brand" href="{{ path('app_post_index') }}"><span class="glyphicon glyphicon-home"></span> Home</a>&nbsp;</li>
+                        <li><a class="navbar-brand" href="#"><span><img src="/icons/blinky.png"></span> GamesF</a>&nbsp;</li>
+                        <li><a class="navbar-brand" href="{{render(url('Games'))}}"><span><img src="/icons/blinky.png"></span> Games</a>&nbsp;</li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">

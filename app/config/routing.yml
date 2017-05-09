@@ -11,3 +11,9 @@ comentarios:
     resource: "@AppBundle/Controller/ComentariosController.php"
     type: annotation
     prefix: /Comment
+
+Games:
+    path: /game
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: ""

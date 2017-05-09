@@ -1,0 +1,79 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Frogrest Jump!{% endblock %}
+
+{% block head%}
+
+
+		<link rel="stylesheet" type="text/css" href="{{ asset('css/development.css') }}">
+{% endblock %}
+{% block body %}
+
+    <div id="fb-root"></div>
+
+	<div id="app-container" class="canvas-app-container">
+	    <canvas id="canvas" class="canvas-app-canvas" tabindex="1" width="1280" height="720"></canvas>
+	</div>
+
+	<button id="fullscreen" class="button">Fullscreen</button>
+
+	<!-- -->
+	    <!-- DEVELOPMENT BLOCK -->
+  <div class="dev_panel dev_depth">
+    <h1>Memory Info</h1>
+    <div class="dev_checkbox_row">
+      <div class="dev_checkbox">
+        <span>HEAP</span>
+          <input type="checkbox" value="1" id="chk_heap" name="" />
+          <label for="chk_heap"></label>
+        </div>
+        <div class="dev_checkbox">
+        <span>DYNAMIC</span>
+          <input type="checkbox" value="1" id="chk_dynamic" name="" />
+          <label for="chk_dynamic"></label>
+        </div>
+      </div>
+    <div class="dev_checkbox_row">
+      <div class="dev_checkbox">
+        <span>STATIC</span>
+          <input type="checkbox" value="1" id="chk_static" name="" />
+          <label for="chk_static"></label>
+      </div>
+      <div class="dev_checkbox">
+        <span>STACK</span>
+          <input type="checkbox" value="1" id="chk_stack" name="" />
+          <label for="chk_stack"></label>
+      </div>
+    </div>
+    <div>
+      <textarea type="text" readonly id="memory_summary"></textarea>
+    </div>
+  </div>
+																													  {% block javascripts %}
+  <script type="text/javascript" src="{{ asset('js/development.js') }}"></script>
+  <!-- END DEVELOPMENT BLOCK -->
+
+	  <script type='text/javascript' src="{{ asset('js/dmloader.js') }}"></script>
+	  <script type='text/javascript' src="{{ asset('js/frogrestJump.js') }}" async onload="MemoryStats.Initialise()"></script>
+	<!-- -->
+
+	<script type='text/javascript'>
+		var extra_params = {
+			archive_location_filter: function( path ) {
+				return ("archive" + path + "");
+			},
+
+			splash_image: "splash_image.png",
+			custom_heap_size: 1174405512
+		};
+
+        Module.runApp("canvas", extra_params);
+
+	    /* Fullscreen button */
+	    document.getElementById("fullscreen").onclick = function (e) {
+	      Module.toggleFullscreen();
+	    };
+	</script>
+{% endblock %}
+	  {% endblock %}
+

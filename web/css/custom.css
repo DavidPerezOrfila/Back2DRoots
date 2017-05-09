@@ -19,3 +19,44 @@
 .margin-bottom-lg {
     margin-bottom: 30px;
 }
+
+.navbar-inverse .navbar-header .navbar-brand {
+    color: #f0ad4e;
+}
+
+.canvas-app-container {
+    background: rgb(255,255,255) no-repeat center url("/images/try_game.png");
+    /* A positioned parent for loading visuals */
+    position: relative;
+}
+
+.canvas-app-container:-webkit-full-screen {
+    /* Auto width and height in Safari/Chrome fullscreen. */
+    width: auto;
+    height: auto;
+}
+
+.canvas-app-progress {
+    position: absolute;
+    background-color: rgb(245, 245, 245);
+    height: 20px;
+    /* Progress same width as canvas. */
+    width: 1280px;
+    bottom: 0px;
+}
+
+.canvas-app-progress-bar {
+    font-size: 12px;
+    height: 20px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(30, 100, 234);
+    text-align: center;
+    line-height: 20px;
+}
+
+.button {
+    color: #fff;
+    background-color: #1e64ea;
+    border-color: transparent;
+    padding: 10px 20px;
+}

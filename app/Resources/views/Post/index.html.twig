@@ -35,13 +35,13 @@
                     <span><a class="btn-danger btn-sm" href="{{ path('app_post_remove', {'id': p.id}) }}"> Borrar </a> </span>
 
                 {% endif %}
-                </br><hr>
+                <hr>
                 {{ render(controller('AppBundle:Comentarios:index', {'id': p.id})) }}
 
                 </div>
             {% endfor %}
-            </tr>
+
         </div>
     </div>
-    </div>
+
 {% endblock %}

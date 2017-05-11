@@ -12,8 +12,11 @@ comentarios:
     type: annotation
     prefix: /Comment
 
-Games:
-    path: /game
-    defaults:
-        _controller: FrameworkBundle:Template:template
-        template: ""
+games:
+    resource: "@AppBundle/Controller/gameController.php"
+    type: annotation
+    prefix: /Games
+
+
+
+

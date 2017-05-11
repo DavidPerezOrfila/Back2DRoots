@@ -22,19 +22,30 @@ class postController extends Controller
     /**
      * @Route("/", name="app_post_index")
      * @return \Symfony\Component\HttpFoundation\Response
+     *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $m = $this->getDoctrine()->getManager();
         $repo = $m->getRepository('AppBundle:Post');
-
         $posts = $repo->findAll();
+
+        /**
+         * @var $paginator \knp\Component\Pager\Paginator
+         */
+        $paginator = $this->get('knp_paginator');
+        $result = $paginator->paginate(
+            $posts,
+            $request->query->getInt('page', 1),
+            5
+        );
 
         return $this->render(':Post:index.html.twig',
             [
-                'posts' => $posts,
+                'posts' => $result,
             ]
         );
+
     }
 
     /**

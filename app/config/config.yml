@@ -72,7 +72,6 @@ doctrine:
             collate: utf8mb4_unicode_ci
 
 # KnpPaginatorBundle
-
 knp_paginator:
     page_range: 5
     default_options:
@@ -81,5 +80,5 @@ knp_paginator:
         sort_direction_name: direction
         distinct: true
     template:
-        pagination: KpnPaginatorBundle:Pagination:Knptwitter_bootstrap_v3_pagination.html.twig
+        pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig
         sortable: KpnPaginatorBundle:Pagination:sortable_link_html.twig

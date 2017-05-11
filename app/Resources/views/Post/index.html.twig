@@ -1,7 +1,5 @@
 {% extends '::base.html.twig' %}
 
-{% block title %}Lista de Mensajes{% endblock %}
-
 {% block body%}
 
 
@@ -42,6 +40,10 @@
             {% endfor %}
 
         </div>
+    </div>
+
+    <div class="navigation text-center">
+        {{ knp_pagination_render(posts) }}
     </div>
 
 {% endblock %}

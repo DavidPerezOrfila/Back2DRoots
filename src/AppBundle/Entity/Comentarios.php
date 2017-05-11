@@ -42,7 +42,7 @@ class Comentarios
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Post", inversedBy="comentario")
      */
-    private $post;
+    protected $post;
 
     /**
      * @return int

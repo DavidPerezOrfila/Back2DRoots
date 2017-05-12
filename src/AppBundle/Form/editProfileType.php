@@ -26,12 +26,12 @@ class editProfileType extends AbstractType
 
     public function getParent()
     {
-        return 'fos_userprofile';
+        return 'fos_user_profile';
 
     }
 
     public function getBlockPrefix()
     {
-        return 'app_user_profile';
+        return 'user';
     }
 }

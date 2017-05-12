@@ -12,6 +12,10 @@ comentarios:
     type: annotation
     prefix: /Comment
 
+admin_area:
+    resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"
+    prefix: /admin
+
 games:
     resource: "@AppBundle/Controller/gameController.php"
     type: annotation

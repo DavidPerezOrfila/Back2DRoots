@@ -32,6 +32,6 @@ class editProfileType extends AbstractType
 
     public function getBlockPrefix()
     {
-        return 'user';
+        return 'user_content';
     }
 }

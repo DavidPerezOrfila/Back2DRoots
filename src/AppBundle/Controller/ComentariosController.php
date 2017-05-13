@@ -24,7 +24,7 @@ class ComentariosController extends Controller
      * @Route("/CommentIndex/{id}", name="app_comentarios_index")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction($id)
+    public function indexAction($id, Request $request)
     {
         $m = $this->getDoctrine()->getManager();
         $repo = $m->getRepository('AppBundle:Comentarios');
@@ -32,9 +32,18 @@ class ComentariosController extends Controller
         $post = $repo2->findOneById($id);
         $postID = $post->getId();
         $comentario = $repo->findByPost($postID);
+        /**
+         * @var $paginator \knp\Component\Pager\Paginator
+         */
+        $paginator = $this->get('knp_paginator');
+        $result = $paginator->paginate(
+            $comentario,
+            $request->query->getInt('page', 1),
+            2
+        );
         return $this->render(':Comentarios:Comentarios.html.twig',
             [
-                'comentario' => $comentario,
+                'comentario' => $result,
             ]
         );
     }

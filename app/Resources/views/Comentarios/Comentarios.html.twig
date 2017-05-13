@@ -8,20 +8,23 @@
 
             <div class="panel-body">
                 <span >{{ c.texto }}</span>
-            </br>
-            <b>Autor:
-            </b>
-            <span >{{ c.author }}</span>
-            <b>Comentario creado:</b>
-            <span>{{ c.updatedAt|date("d/m/y") }}</span>
-            {% if (c.author == app.user) or (app.user == c.author) or is_granted('ROLE_ADMIN')%}
-                <span>
-                    <a class="fi glyphicon glyphicon-remove" href="{{ path('app_comentarios_remove', {'id' : c.getId }) }}"></a>
-                </span>
-            {% endif %}
+                </br>
+                <b>Autor:
+                </b>
+                <span >{{ c.author }}</span>
+                <b>Comentario creado:</b>
+                <span>{{ c.updatedAt|date("d/m/y") }}</span>
+                {% if (c.author == app.user) or (app.user == c.author) or is_granted('ROLE_ADMIN')%}
+                    <span>
+                        <a class="fi glyphicon glyphicon-remove" href="{{ path('app_comentarios_remove', {'id' : c.getId }) }}"></a>
+                    </span>
+                {% endif %}
                 <hr>
-        </div>
+            </div>
 
     {% endfor %}
+        <div class="navigation text-center">
+            {{ knp_pagination_render(comentario) }}
+        </div>
     </div>
 {% endblock %}

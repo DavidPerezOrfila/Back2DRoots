@@ -191,6 +191,7 @@ class Post
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Comentarios", mappedBy="post")
      * @ORM\JoinColumn(name="postId", referencedColumnName="id")
+     *
      */
     protected $comentario;
 

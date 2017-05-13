@@ -41,6 +41,7 @@ class Comentarios
      * @ORM\Column(name="postId", type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Post", inversedBy="comentario")
+     *
      */
     protected $post;
 

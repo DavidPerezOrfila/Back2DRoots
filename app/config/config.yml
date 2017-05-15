@@ -65,11 +65,19 @@ swiftmailer:
 
 # app/config/config.yml
 doctrine:
+    orm:
+        entity_managers:
+            default:
+                mappings:
+                    SonataMediaBundle: ~
+
     dbal:
         charset: utf8mb4
         default_table_options:
             charset: utf8mb4
             collate: utf8mb4_unicode_ci
+        types:
+            json: Sonata\Doctrine\Types\JsonType
 
 # KnpPaginatorBundle
 knp_paginator:
@@ -90,4 +98,17 @@ sonata_block:
         # enable the SonataAdminBundle block
         sonata.admin.block.admin_list:
             contexts: [admin]
+        sonata.admin.block.search_result:
+            contexts: [admin]
 
+sonata_admin:
+    templates:
+        # other configuration options
+        search:              SonataAdminBundle:Core:search.html.twig
+        search_result_block: SonataAdminBundle:Block:block_search_result.html.twig
+
+#MediaBundle
+sonata_media:
+    providers:
+        image:
+            resizer: sonata.media.resizer.square

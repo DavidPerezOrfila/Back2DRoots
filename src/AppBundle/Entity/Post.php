@@ -196,6 +196,28 @@ class Post
     protected $comentario;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Category", inversedBy="post")
+     */
+    private $categoria;
+
+    /**
+     * @return mixed
+     */
+    public function getCategoria()
+    {
+        return $this->categoria;
+    }
+
+    /**
+     * @param mixed $categoria
+     */
+    public function setCategoria($categoria)
+    {
+        $this->categoria = $categoria;
+    }
+
+
+    /**
      * @return mixed
      */
     public function getComentario()

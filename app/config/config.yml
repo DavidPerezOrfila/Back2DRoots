@@ -16,7 +16,7 @@ parameters:
 framework:
     esi: { enabled: true }
     fragments: { path: /_fragment }
-    translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: [en] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"

@@ -10,7 +10,11 @@
             <div class="btn-success">{{ form_label(form.mensaje) }}:
                 {{ form_widget(form.mensaje) }}</div>
             {{ form_rest(form) }}
+            <div class="btn-default">{{ form_label(form.categoria) }}:
+                {{ form_widget(form.categoria) }}</div>
+            {{ form_rest(form) }}
             <div>
+
                 <button class="btn-basic rounded" type="submit" value="submit">Añadir</button>
             </div>
         </form>

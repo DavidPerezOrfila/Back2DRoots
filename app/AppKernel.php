@@ -33,6 +33,8 @@ class AppKernel extends Kernel
 
             new Sonata\MediaBundle\SonataMediaBundle(),
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
+            new Sonata\ClassificationBundle\SonataClassificationBundle(),
+            new Application\Sonata\ClassificationBundle\ApplicationSonataClassificationBundle(),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
 
             // You need to add this dependency to make media functional

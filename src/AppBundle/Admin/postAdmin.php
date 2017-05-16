@@ -12,6 +12,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Bundle\SecurityBundle\Tests\Functional\Bundle\CsrfFormLoginBundle\Form\UserLoginType;
 
 
 class postAdmin extends AbstractAdmin
@@ -22,6 +23,7 @@ class postAdmin extends AbstractAdmin
             ->with('Content', array('class' => 'col-md-9'))
                 ->add('titulo', 'text')
                 ->add('mensaje', 'text')
+
             ->end()
 
             ->with('Meta data', array('class' => 'col-md-3'))

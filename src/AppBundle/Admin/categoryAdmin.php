@@ -7,6 +7,7 @@
  */
 namespace AppBundle\Admin;
 
+use AppBundle\Entity\Category;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -28,4 +29,11 @@ class categoryAdmin extends AbstractAdmin
     {
         $listMapper->addIdentifier('nombre');
     }
+    public function toString($object)
+    {
+        return $object instanceof Category
+            ? $object->getNombre()
+            : 'Post'; // shown in the breadcrumb on the create view
+    }
+
 }

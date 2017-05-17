@@ -34,7 +34,7 @@ class IndexController extends Controller
                 $m->persist($p);
                 $m->flush();
 
-                return $this->redirectToRoute('app_index_index');
+                return $this->redirectToRoute('app_index_upload');
             }
         }
 

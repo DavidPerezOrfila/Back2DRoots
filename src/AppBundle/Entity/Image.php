@@ -53,7 +53,7 @@ class Image
      *
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
      *
-     * @return Product
+     * @return Image
      */
     public function setImageFile(File $image = null)
     {
@@ -79,7 +79,7 @@ class Image
     /**
      * @param string $imageName
      *
-     * @return Product
+     * @return Image
      */
     public function setImageName($imageName)
     {

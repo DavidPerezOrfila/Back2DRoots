@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -86,10 +87,19 @@ class Category
         return $this->nombre;
     }
 
+    public function __construct()
+    {
+        $this->Post = new ArrayCollection();
+    }
+
     public function __toString()
     {
         return $this->getNombre();
     }
 
-}
 
+
+
+
+
+}

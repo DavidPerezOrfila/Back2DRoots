@@ -29,11 +29,16 @@ class categoryAdmin extends AbstractAdmin
     {
         $listMapper->addIdentifier('nombre');
     }
+
+    /**
+     * @param mixed $object
+     * @return string
+     */
     public function toString($object)
     {
         return $object instanceof Category
             ? $object->getNombre()
-            : 'Post'; // shown in the breadcrumb on the create view
+            : 'Category'; // shown in the breadcrumb on the create view
     }
 
 }

@@ -12,7 +12,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Symfony\Bundle\SecurityBundle\Tests\Functional\Bundle\CsrfFormLoginBundle\Form\UserLoginType;
+
 
 
 class postAdmin extends AbstractAdmin
@@ -21,8 +21,13 @@ class postAdmin extends AbstractAdmin
     {
         $formMapper
             ->with('Content', array('class' => 'col-md-9'))
-                ->add('titulo', 'text')
-                ->add('mensaje', 'text')
+            ->add('titulo', 'text', array(
+                'label' => 'Titulo'
+            ))
+            ->add('author', 'entity', array(
+                'class' => 'Trascastro\UserBundle\Entity\User'
+            ))
+            ->add('mensaje', 'text')
 
             ->end()
 
@@ -31,6 +36,7 @@ class postAdmin extends AbstractAdmin
                     'class' => 'AppBundle\Entity\Category',
                     'property' => 'nombre',
                 ])
+
             ->end()
         ;
     }
@@ -39,6 +45,7 @@ class postAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('titulo')
+            ->add('author')
             ->add('mensaje')
             ->add('categoria.nombre')
         ;
@@ -47,6 +54,7 @@ class postAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('titulo')
+            ->add('author')
             ->add('categoria', null, array(), 'entity', array(
                 'class'    => 'AppBundle\Entity\Category',
                 'choice_label' => 'nombre',

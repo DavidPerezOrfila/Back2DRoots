@@ -3437,15 +3437,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dustin10/VichUploaderBundle.git",
-                "reference": "83c3e2700cee89e9bd551019184b33fbeeb99876"
+                "reference": "bce31003fcb50779921db4cfa46f122bf832861b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/83c3e2700cee89e9bd551019184b33fbeeb99876",
-                "reference": "83c3e2700cee89e9bd551019184b33fbeeb99876",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/bce31003fcb50779921db4cfa46f122bf832861b",
+                "reference": "bce31003fcb50779921db4cfa46f122bf832861b",
                 "shasum": ""
             },
             "require": {
+                "doctrine/annotations": "^1.3",
                 "jms/metadata": "^1.6",
                 "php": "^7.0",
                 "symfony/asset": "^2.8|^3.1",
@@ -3511,7 +3512,7 @@
                 "file uploads",
                 "upload"
             ],
-            "time": "2017-05-08 11:20:47"
+            "time": "2017-05-17 17:07:25"
         }
     ],
     "packages-dev": [

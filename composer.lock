@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b8565e8d29bee8d93c110da9569942b2",
-    "content-hash": "4914e9fdeb79cf34d6b523ecbb77ae6a",
+    "hash": "90219afea81a6ea617b33abcfe8c6772",
+    "content-hash": "b84afc6e80a05ae2085b348c5fd33a1e",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1488,16 +1488,16 @@
         },
         {
             "name": "knplabs/knp-paginator-bundle",
-            "version": "2.5.4",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpPaginatorBundle.git",
-                "reference": "1618a19a871ba1245dc68e462b35e7df07dcfcc3"
+                "reference": "62aaefbc6dde43737d41e5a8069eb5e391df71a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/1618a19a871ba1245dc68e462b35e7df07dcfcc3",
-                "reference": "1618a19a871ba1245dc68e462b35e7df07dcfcc3",
+                "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/62aaefbc6dde43737d41e5a8069eb5e391df71a6",
+                "reference": "62aaefbc6dde43737d41e5a8069eb5e391df71a6",
                 "shasum": ""
             },
             "require": {
@@ -1546,7 +1546,7 @@
                 "pagination",
                 "paginator"
             ],
-            "time": "2017-03-21 09:45:46"
+            "time": "2017-04-13 14:42:31"
         },
         {
             "name": "kriswallsmith/assetic",
@@ -3437,12 +3437,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dustin10/VichUploaderBundle.git",
-                "reference": "bce31003fcb50779921db4cfa46f122bf832861b"
+                "reference": "be46b827ff4189bb7ad4d8078b069220dd20482f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/bce31003fcb50779921db4cfa46f122bf832861b",
-                "reference": "bce31003fcb50779921db4cfa46f122bf832861b",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/be46b827ff4189bb7ad4d8078b069220dd20482f",
+                "reference": "be46b827ff4189bb7ad4d8078b069220dd20482f",
                 "shasum": ""
             },
             "require": {
@@ -3512,7 +3512,7 @@
                 "file uploads",
                 "upload"
             ],
-            "time": "2017-05-17 17:07:25"
+            "time": "2017-05-17 19:54:22"
         }
     ],
     "packages-dev": [
@@ -4953,6 +4953,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "friendsofsymfony/user-bundle": 20,
+        "knplabs/knp-paginator-bundle": 20,
         "gedmo/doctrine-extensions": 20,
         "vich/uploader-bundle": 20,
         "twig/twig": 20

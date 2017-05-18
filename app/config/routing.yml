@@ -21,10 +21,11 @@ _sonata_admin:
     type: sonata_admin
     prefix: /admin
 
-uploads:
-    resource: "@AppBundle/Controller/IndexController.php"
-    type:     annotation
-    prefix:   /upload
+
+usuariosRegistrados:
+    resource: "@UserBundle/Controller/usuariosRegistradosController.php"
+    type: annotation
+    prefix: /usuarios
 
 games:
     resource: "@AppBundle/Controller/gameController.php"

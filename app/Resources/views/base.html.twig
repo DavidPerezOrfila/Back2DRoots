@@ -43,12 +43,12 @@
                 <div class="collapse navbar-collapse" id="navbar">
                     <ul class="nav navbar-nav">
                         <li class="nav-item"><a class="navbar-brand" href="{{ path('app_post_index') }}"><span class="glyphicon glyphicon-home"></span> Home</a>&nbsp;</li>
-                        <li class="nav-item" id="icons"><a class="navbar-brand" href="#"><span><img src="/icons/blinky.png"></span> Usuarios</a>&nbsp;</li>
+                        <li class="nav-item" id="icons"><a class="navbar-brand" href="{{ path('app_usuariosRegistrados_index') }}"><span><img src="/icons/blinky.png"></span> Usuarios</a>&nbsp;</li>
                         <li class="nav-item" id="icons"><a class="navbar-brand" href="#"><span><img src="/icons/inky.png"></span> Games</a>&nbsp;</li>
                     </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <div class="navbar-form navbar-right">
+                    <ul class="nav navbar-nav navbar-right ">
+                        <div class="navbar-form navbar-right ">
                             {{ render_esi(controller('UserBundle:HoritzontalLogin:horitzontalLogin', {'route': app.request.get('_route')})) }}
                         </div>
                     </ul>

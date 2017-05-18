@@ -14,11 +14,12 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    app.path.media: /uploads/media
 
 framework:
     esi: { enabled: true }
     fragments: { path: /_fragment }
-    translator:      { fallbacks: [%locale%] }
+    translator:      { fallbacks: [en] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -30,7 +31,7 @@ framework:
     templating:
         engines: ['twig']
         #assets_version: SomeVersionScheme
-    default_locale:  "%locale%"
+    default_locale:  "en"
     trusted_hosts:   ~
     trusted_proxies: ~
     session:
@@ -133,5 +134,22 @@ sonata_admin:
         button_history:                 SonataAdminBundle:Button:history_button.html.twig
         button_list:                    SonataAdminBundle:Button:list_button.html.twig
         button_show:                    SonataAdminBundle:Button:show_button.html.twig
+
+
+vich_uploader:
+    db_driver: orm
+    mappings:
+        media:
+            uri_prefix:         '%app.path.media%'
+            upload_destination: '%kernel.root_dir%/../web/uploads/media'
+            inject_on_load:     true
+            delete_on_update:   true
+            delete_on_remove:   true
+
+
+fos_user:
+    profile:
+        form:
+            type: Trascastro\UserBundle\Form\editProfileType
 
 

@@ -13,12 +13,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class gameController extends Controller
 {
     /**
-     * @Route("/Games", name="app_games_index")
+     * @Route("/", name="app_games_index")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
     {
 
-        return $this->render(':Games:index.html.twig');
+        return $this->render(':Games:frogestJump.html.twig');
     }
 }

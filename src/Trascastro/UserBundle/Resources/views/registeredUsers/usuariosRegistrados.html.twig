@@ -8,10 +8,18 @@
                    total de personas: {{ users.getTotalItemCount() }}
                 </span>
             </div>
+            <hr>
             <div class="box-content box-form">
-
+                <div class="avatar">
                 {% for u in users %}
-                    <img src="{{ u.imageFile }}">
+                    {% if u.imageFile == null %}
+                        <img src="{{ asset('/uploads/media/unicorn.png') }}" class="img-circle img-responsive">
+                    {% else %}
+                        <img src="{{ asset('/uploads/media/'~ u.image) }}" class="img-circle img-responsive">
+                    {% endif %}
+                    <label><h4>{{ u.username }}</h4></label>
+                    <hr>
+                </div>
                 {% endfor %}
 
             </div>

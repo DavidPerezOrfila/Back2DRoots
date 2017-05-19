@@ -2,11 +2,13 @@
 
 namespace Trascastro\UserBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+use FOS\UserBundle\Event\FormEvent;
+use FOS\UserBundle\FOSUserEvents;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-
-class usuariosRegistradosController extends Controller
+use FOS\UserBundle\Controller\ProfileController as BaseController;
+class usuariosRegistradosController extends BaseController
 {
 
         /**
@@ -15,17 +17,15 @@ class usuariosRegistradosController extends Controller
          */
         public function registradosAction(Request $request)
     {
-            $m = $this->getDoctrine()->getManager();
-            $repo = $m->getRepository('Trascastro\UserBundle\Entity\User');
-            $users = $repo->findAll();
-
-
+            $m      = $this->getDoctrine()->getManager();
+            $repo   = $m->getRepository('Trascastro\UserBundle\Entity\User');
+            $users  = $repo->findAll();
 
             /**
              * @var $paginator \knp\Component\Pager\Paginator
              */
-            $paginator = $this->get('knp_paginator');
-            $result = $paginator->paginate(
+            $paginator  = $this->get('knp_paginator');
+            $result     = $paginator->paginate(
                 $users,
                 $request->query->getInt('page', 1),
                 5
@@ -38,6 +38,8 @@ class usuariosRegistradosController extends Controller
             );
 
     }
+
+
 }
 
 

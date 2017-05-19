@@ -13,9 +13,13 @@ class editProfileType extends AbstractType
     {
             $builder
                 ->add('bio')
-                ->add('image')
                 ->add('imageFile', VichImageType::class, [
+                    'label' => 'Avatar',
                     'required' => false,
+                    'data_class' => null,
+                    'attr' => array(
+                     'class' => 'form-image form-control'
+                    ),
                     'allow_delete' => true, // optional, default is true
                     'download_link' => false, // optional, default is true
                 ])

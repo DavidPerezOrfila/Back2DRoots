@@ -56,24 +56,28 @@ class User extends BaseUser
     private $comentarios;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable= true)
      * @var string
+     *
      */
     private $image;
 
     /**
      * @Assert\File(
      *     maxSize="1M",
-     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"}
-     * )
+     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"},
+     *     maxSizeMessage="Please insert valid image (maxSize= 1MB)"
+     *      )
+     *
      * @Vich\UploadableField(mapping="media", fileNameProperty="image")
      * @var File
      */
     private $imageFile;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @var string
+     *
      */
     private $bio;
 

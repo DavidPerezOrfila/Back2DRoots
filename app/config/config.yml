@@ -68,11 +68,15 @@ swiftmailer:
 
 # app/config/config.yml
 doctrine:
+    orm:
+        resolve_target_entities:
+            Symfony\Component\Security\Core\User\UserInterface: FOSUserBundle
     dbal:
         charset: utf8mb4
         default_table_options:
             charset: utf8mb4
             collate: utf8mb4_unicode_ci
+
 
 
 # KnpPaginatorBundle

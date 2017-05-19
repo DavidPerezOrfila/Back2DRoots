@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "90219afea81a6ea617b33abcfe8c6772",
-    "content-hash": "b84afc6e80a05ae2085b348c5fd33a1e",
+    "hash": "8af0760ea11cf75acaf88e866fa161f9",
+    "content-hash": "e559ba197be91a0884bb19aef14c6f5a",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -984,6 +984,44 @@
                 "orm"
             ],
             "time": "2016-12-18 15:42:34"
+        },
+        {
+            "name": "firediy/private-message-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lobodol/FireDIY-PrivateMessageBundle.git",
+                "reference": "39756e585f2d35c57f841ba2d75d8176c1787131"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lobodol/FireDIY-PrivateMessageBundle/zipball/39756e585f2d35c57f841ba2d75d8176c1787131",
+                "reference": "39756e585f2d35c57f841ba2d75d8176c1787131",
+                "shasum": ""
+            },
+            "require-dev": {
+                "escapestudios/symfony2-coding-standard": "~2.0",
+                "squizlabs/php_codesniffer": "*"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "FD\\PrivateMessageBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "lobodol",
+                    "email": "grobodol@gmail.com"
+                }
+            ],
+            "description": "Symfony FDPrivateMessageBundle",
+            "homepage": "https://github.com/lobodol/FireDIY-PrivateMessageBundle",
+            "time": "2017-02-14 15:34:37"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -4956,7 +4994,8 @@
         "knplabs/knp-paginator-bundle": 20,
         "gedmo/doctrine-extensions": 20,
         "vich/uploader-bundle": 20,
-        "twig/twig": 20
+        "twig/twig": 20,
+        "firediy/private-message-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

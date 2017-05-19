@@ -18,7 +18,11 @@ class gameController extends Controller
      */
     public function indexAction()
     {
-
+        if ($this->isGranted('ROLE_USER')) {
         return $this->render(':Games:frogestJump.html.twig');
+        }
+        else{
+            return $this->redirectToRoute('fos_user_registration_register');
+        }
     }
 }

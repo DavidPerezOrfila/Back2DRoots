@@ -13,16 +13,18 @@
                 <div class="avatar">
                 {% for u in users %}
                     {% if u.imageFile == null %}
-                        <img src="{{ asset('/uploads/media/unicorn.png') }}" class="img-circle img-responsive">
+                        <img src="{{ asset('/uploads/media/unicorn.png') }}" class=" img-circle img-responsive ">
                     {% else %}
-                        <img src="{{ asset('/uploads/media/'~ u.image) }}" class="img-circle img-responsive">
+                        <img src="{{ asset('/uploads/media/'~ u.image) }}" class=" img-circle img-responsive ">
                     {% endif %}
                     <label><h4>{{ u.username }}</h4></label>
                     <hr>
-                </div>
                 {% endfor %}
-
+                </div>
             </div>
+        </div>
+        <div class="navigation text-center">
+            {{ knp_pagination_render(users) }}
         </div>
     </div>
 {% endblock %}

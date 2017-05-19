@@ -28,7 +28,7 @@ class usuariosRegistradosController extends BaseController
             $result     = $paginator->paginate(
                 $users,
                 $request->query->getInt('page', 1),
-                5
+                4
             );
 
             return $this->render('UserBundle:registeredUsers:usuariosRegistrados.html.twig',

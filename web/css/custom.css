@@ -69,3 +69,12 @@
     margin-top: -2px;
 }
 
+.avatar {
+    width: 100px;
+}
+
+.avatar img {
+    display: block;
+    width: 100%;
+    height: auto;
+}

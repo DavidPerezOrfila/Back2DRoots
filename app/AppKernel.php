@@ -20,7 +20,6 @@ class AppKernel extends Kernel
             new \Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
             new \Symfony\Bundle\AsseticBundle\AsseticBundle(),
-            new FD\PrivateMessageBundle\FDPrivateMessageBundle(),
             new AppBundle\AppBundle(),
 
             // These are the other bundles the SonataAdminBundle relies on

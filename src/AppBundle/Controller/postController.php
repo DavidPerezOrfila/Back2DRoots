@@ -28,7 +28,7 @@ class postController extends Controller
     {
         $m = $this->getDoctrine()->getManager();
         $repo = $m->getRepository('AppBundle:Post');
-        $posts = $repo->findAll();
+        $posts = $repo->findBy(array(), array('id' => 'DESC'));
 
         /**
          * @var $paginator \knp\Component\Pager\Paginator

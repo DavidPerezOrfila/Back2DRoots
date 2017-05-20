@@ -17,6 +17,8 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
+
 /**
  * @ORM\Table(name="app_user")
  * @ORM\Entity(repositoryClass="Trascastro\UserBundle\Repository\UserRepository")

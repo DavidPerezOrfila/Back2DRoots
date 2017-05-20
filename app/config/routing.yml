@@ -21,8 +21,6 @@ _sonata_admin:
     type: sonata_admin
     prefix: /admin
 
-fd_private_message:
-    resource: "@FDPrivateMessageBundle/Resources/config/routing.yml"
 
 usuariosRegistrados:
     resource: "@UserBundle/Controller/usuariosRegistradosController.php"

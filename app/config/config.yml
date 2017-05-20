@@ -68,9 +68,6 @@ swiftmailer:
 
 # app/config/config.yml
 doctrine:
-    orm:
-        resolve_target_entities:
-            Symfony\Component\Security\Core\User\UserInterface: FOSUserBundle
     dbal:
         charset: utf8mb4
         default_table_options:

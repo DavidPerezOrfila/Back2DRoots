@@ -17,15 +17,16 @@ class usuariosRegistradosController extends BaseController
          */
         public function registradosAction(Request $request)
     {
-            $m      = $this->getDoctrine()->getManager();
-            $repo   = $m->getRepository('Trascastro\UserBundle\Entity\User');
-            $users  = $repo->findAll();
+        if ($this->isGranted('ROLE_USER')) {
+            $m = $this->getDoctrine()->getManager();
+            $repo = $m->getRepository('Trascastro\UserBundle\Entity\User');
+            $users = $repo->findAll();
 
             /**
              * @var $paginator \knp\Component\Pager\Paginator
              */
-            $paginator  = $this->get('knp_paginator');
-            $result     = $paginator->paginate(
+            $paginator = $this->get('knp_paginator');
+            $result = $paginator->paginate(
                 $users,
                 $request->query->getInt('page', 1),
                 4
@@ -36,6 +37,9 @@ class usuariosRegistradosController extends BaseController
                     'users' => $result,
                 ]
             );
+        }else{
+            return $this->redirectToRoute('fos_user_registration_register');
+        }
 
     }
 

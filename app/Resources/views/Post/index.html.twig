@@ -2,49 +2,72 @@
 
 {% block body%}
 
+  <div class="panel-group">
+    {% if is_granted('ROLE_USER') %}
 
-    <div class="panel-group">
-        {% if is_granted('ROLE_USER') %}
+      <form method="post" action="{{ path('app_post_insert') }}">
+        <button class="btn-success btn-sm" type="submit" value="submit">Nuevo Post</button>
+      </form>
+    {% endif %}
+    <br>
+    <div class="panel panel-primary">
 
-            <form method="post" action="{{ path('app_post_insert') }}">
-                <button class="btn-success btn-sm" type="submit" value="submit">Nuevo Post</button>
-            </form>
-        {% endif %}
-        <br>
-        <div class="panel panel-primary">
+      {% for p in posts %}
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <b>{{ p.titulo }}</b>
+          </h3>
+          <span>
+            <b>Autor:
+            </b>
+            <i>{{ p.author }}</i>
+          </span>
+          <span>
+            <b>Categoría:
+            </b>{{ p.categoria }}</span>
+        </div>
+        <div class="panel-body ">
+          <span>{{ p.mensaje}}</span>
+          <hr>
+          <b>Texto creado:
+          </b>
+          <span>{{ p.createdAt|date("d/m/Y H:i:s") }}
+          </span>
+          <b>Texto actualizado:
+          </b>
+          <span>{{ p.updatedAt|date("d/m/Y H:i:s") }}
+          </span>
+          <hr>
 
-            {% for p in posts %}
-            <div class="panel-heading">
-                <h3 class="panel-title"><b>{{ p.titulo }}</b></h3>
-                <span><b>Autor: </b><i>{{ p.author }}</i></span>
-                <span><b>Categoría: </b>{{ p.categoria }}</span>
-            </div>
-                <div class="panel-body ">
-                <span>{{ p.mensaje}}</span>
-                    <hr>
-                    <b>Texto creado: </b><span>{{ p.createdAt|date("d/m/Y H:i:s") }} </span>
-                    <b>Texto actualizado: </b><span>{{ p.updatedAt|date("d/m/Y H:i:s") }} </span>
-                    <hr>
+          <span>
+            <a class="btn-info btn-sm" href="{{ path('app_comentarios_new', {'id': p.id}) }}">Crear comentario</a>
+          </span>
+          {% if app.user == p.author or is_granted('ROLE_ADMIN') %}
 
-                <span><a class="btn-info btn-sm" href="{{ path('app_comentarios_new', {'id': p.id}) }}">Crear comentario</a></span>
-                {% if app.user == p.author or is_granted('ROLE_ADMIN') %}
+            <span>
+              <a class="btn-warning btn-sm" href="{{ path('app_post_update', {'id': p.id}) }}">
+                Actualizar
+              </a>
+            </span>
 
-                    <span><a class="btn-warning btn-sm" href="{{ path('app_post_update', {'id': p.id}) }}"> Actualizar </a></span>
+            <span>
+              <a class="btn-danger btn-sm" href="{{ path('app_post_remove', {'id': p.id}) }}">
+                Borrar
+              </a>
+            </span>
 
-                    <span><a class="btn-danger btn-sm" href="{{ path('app_post_remove', {'id': p.id}) }}"> Borrar </a> </span>
-
-                {% endif %}
-                <hr>
-                {{ render(controller('AppBundle:Comentarios:index', {'id': p.id})) }}
-
-                </div>
-            {% endfor %}
+          {% endif %}
+          <hr>
+          {{ render(controller('AppBundle:Comentarios:index', {'id': p.id})) }}
 
         </div>
-    </div>
+      {% endfor %}
 
-    <div class="navigation text-center">
-        {{ knp_pagination_render(posts) }}
     </div>
+  </div>
+
+  <div class="navigation text-center">
+    {{ knp_pagination_render(posts) }}
+  </div>
 
 {% endblock %}

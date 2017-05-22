@@ -20,7 +20,7 @@ class usuariosRegistradosController extends BaseController
         if ($this->isGranted('ROLE_USER')) {
             $m = $this->getDoctrine()->getManager();
             $repo = $m->getRepository('Trascastro\UserBundle\Entity\User');
-            $users = $repo->findAll();
+            $users = $repo->findBy(array(), array('id' => 'ASC'));
 
             /**
              * @var $paginator \knp\Component\Pager\Paginator
@@ -42,6 +42,39 @@ class usuariosRegistradosController extends BaseController
         }
 
     }
+
+    /**
+     * @Route("/", name="app_usuariosRegistrados_index")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function userSearchAction(Request $request)
+    {
+        if ($this->isGranted('ROLE_USER')) {
+            $m = $this->getDoctrine()->getManager();
+            $repo = $m->getRepository('Trascastro\UserBundle\Entity\User');
+            $users = $repo->findBy(array(), array('id' => 'ASC'));
+
+            /**
+             * @var $paginator \knp\Component\Pager\Paginator
+             */
+            $paginator = $this->get('knp_paginator');
+            $result = $paginator->paginate(
+                $users,
+                $request->query->getInt('page', 1),
+                4
+            );
+
+            return $this->render('UserBundle:registeredUsers:usuariosRegistrados.html.twig',
+                [
+                    'users' => $result,
+                ]
+            );
+        }else{
+            return $this->redirectToRoute('fos_user_registration_register');
+        }
+
+    }
+
 
 
 }

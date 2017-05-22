@@ -1,23 +1,23 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-    <div>
-        <form method="post" action="{{ action }}" novalidate="novalidate">
-            <!-- para evitar la validacion html5 -->
+  <div>
+    <form method="post" action="{{ action }}" novalidate="novalidate">
+      <!-- para evitar la validacion html5 -->
 
-            <div class="btn-primary rounded">{{ form_errors(form.titulo) }}{{ form_label(form.titulo) }}:
-                {{ form_widget(form.titulo) }}</div>
-            <div class="btn-success">{{ form_label(form.mensaje) }}:
-                {{ form_widget(form.mensaje) }}</div>
-            {{ form_rest(form) }}
-            <div class="btn-default">{{ form_label(form.categoria) }}:
-                {{ form_widget(form.categoria) }}</div>
-            {{ form_rest(form) }}
-            <div>
+      <div class="btn-primary rounded">{{ form_errors(form.titulo) }}{{ form_label(form.titulo) }}:
+        {{ form_widget(form.titulo) }}</div>
+      <div class="btn-success">{{ form_label(form.mensaje) }}:
+        {{ form_widget(form.mensaje) }}</div>
+      {{ form_rest(form) }}
+      <div class="btn-default">{{ form_label(form.categoria) }}:
+        {{ form_widget(form.categoria) }}</div>
+      {{ form_rest(form) }}
+      <div>
 
-                <button class="btn-basic rounded" type="submit" value="submit">Añadir</button>
-            </div>
-        </form>
-    </div>
+        <button class="btn-basic rounded" type="submit" value="submit">Añadir</button>
+      </div>
+    </form>
+  </div>
 
 {% endblock %}

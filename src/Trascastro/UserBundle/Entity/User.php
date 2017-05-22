@@ -67,7 +67,7 @@ class User extends BaseUser
     /**
      * @Assert\File(
      *     maxSize="1M",
-     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"},
+     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg", "image/gif"},
      *     maxSizeMessage="Please insert valid image (maxSize= 1MB)"
      *      )
      *

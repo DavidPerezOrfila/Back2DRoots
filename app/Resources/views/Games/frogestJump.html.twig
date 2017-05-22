@@ -1,35 +1,35 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-    <div id="fb-root"></div>
+  <div id="fb-root"></div>
 
-    <div id="app-container" class="canvas-app-container">
-        <canvas id="canvas" class="canvas-app-canvas" tabindex="1" width="1280" height="720"></canvas>
-    </div>
+  <div id="app-container" class="canvas-app-container">
+    <canvas id="canvas" class="canvas-app-canvas" tabindex="1" width="1280" height="720"></canvas>
+  </div>
 
-    <button id="fullscreen" class="button">Fullscreen</button>
+  <button id="fullscreen" class="button">Fullscreen</button>
 
-    <!-- -->
+  <!-- -->
 
-    <script type='text/javascript' src="{{ asset('Games/FrogestJump/dmloader.js') }}"></script>
-    <script type='text/javascript' src="{{ asset('Games/FrogestJump/FrogestJump.js') }}" async onload=""></script>
-    <!-- -->
+  <script type='text/javascript' src="{{ asset('Games/FrogestJump/dmloader.js') }}"></script>
+  <script type='text/javascript' src="{{ asset('Games/FrogestJump/FrogestJump.js') }}" async onload=""></script>
+  <!-- -->
 
-    <script type='text/javascript'>
-        var extra_params = {
-            archive_location_filter: function( path ) {
-                return ("FrogestJump/archive" + path + "");
-            },
+  <script type='text/javascript'>
+    var extra_params = {
+      archive_location_filter: function(path) {
+        return ("FrogestJump/archive" + path + "");
+      },
 
-            splash_image: "splash_image.png",
-            custom_heap_size: 377440512
-        };
+      splash_image: "splash_image.png",
+      custom_heap_size: 377440512
+    };
 
-        Module.runApp("canvas", extra_params);
+    Module.runApp("canvas", extra_params);
 
-        /* Fullscreen button */
-        document.getElementById("fullscreen").onclick = function (e) {
-            Module.toggleFullscreen();
-        };
-    </script>
+    /* Fullscreen button */
+    document.getElementById("fullscreen").onclick = function(e) {
+      Module.toggleFullscreen();
+    };
+  </script>
 {% endblock %}

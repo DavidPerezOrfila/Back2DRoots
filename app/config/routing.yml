@@ -27,6 +27,12 @@ usuariosRegistrados:
     type: annotation
     prefix: /usuarios
 
+#userSearch:
+#    resource: "@UserBundle/Controller/userSearchController.php"
+ #   type: annotation
+  #  prefix: /search
+
+
 games:
     resource: "@AppBundle/Controller/gameController.php"
     type: annotation

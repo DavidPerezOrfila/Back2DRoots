@@ -26,4 +26,12 @@ class UserRepository extends EntityRepository
             ->getOneOrNullResult()
             ;
     }
+
+    public function search($search){
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.username LIKE :search OR u.email LIKE :search')
+            ->setParameter('search', '%'.$search.'%')
+            ->getQuery()
+            ->getResult();
+    }
 }

@@ -6,7 +6,7 @@
     {% if is_granted('ROLE_USER') %}
 
       <form method="post" action="{{ path('app_post_insert') }}">
-        <button class="btn-success btn-sm" type="submit" value="submit">Nuevo Post</button>
+        <button class="btn-primary btn-sm" type="submit" value="submit">Nuevo Post</button>
       </form>
     {% endif %}
     <br>

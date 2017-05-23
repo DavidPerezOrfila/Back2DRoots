@@ -11,7 +11,6 @@
         </button>
         <a class="navbar-brand" id="icons" href="#">
           <span><img src="/icons/joystick.png" width="36" height="36" alt="brand"></span>Back2DRoots</a>&nbsp;
-
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -30,9 +29,9 @@
               <span><img src="{{ asset('icons/inky.png') }}"></span>
               Games</a>&nbsp;</li>
           <li>
-            <form action="" class="navbar-form navbar-left">
+            <form action="{{ path('app_usuariosRegistrados_search') }}" class="navbar-form navbar-left" method="post">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Buscar usuarios">
+                <input type="text" class="form-control" name="search" placeholder="Buscar usuarios">
               </div>
               <span>
                 <button type="submit" class="btn-basic"><img src="{{ asset('icons/pinky.png') }}">
@@ -59,10 +58,9 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
           <div class="panel panel-primary">
             <div class="panel-heading">
-              <h3>Usuarios registrados</h3>
+              <h4>Usuarios registrados</h4>
               <div class="count">
-
-                  total de personas:
+                  Total de personas:
                   {{ users.getTotalItemCount() }}
               </div>
             </div>

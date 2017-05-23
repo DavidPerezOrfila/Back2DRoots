@@ -44,15 +44,24 @@ class usuariosRegistradosController extends BaseController
     }
 
     /**
-     * @Route("/", name="app_usuariosRegistrados_index")
+     * @Route("/search", name="app_usuariosRegistrados_search")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function userSearchAction(Request $request)
     {
         if ($this->isGranted('ROLE_USER')) {
             $m = $this->getDoctrine()->getManager();
+            $search = $_POST['search'];
+            if($search == null) {
+                return $this->redirect($this->generateUrl('app_post_index'));
+            }
             $repo = $m->getRepository('Trascastro\UserBundle\Entity\User');
-            $users = $repo->findBy(array(), array('id' => 'ASC'));
+
+            /**
+             * Utilizo la función search creada en el repositorio UserRepository
+             *
+             * */
+            $users= $repo->search($search);
 
             /**
              * @var $paginator \knp\Component\Pager\Paginator

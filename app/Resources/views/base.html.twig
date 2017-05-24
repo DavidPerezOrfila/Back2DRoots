@@ -12,6 +12,13 @@
       {% block title %}Back2DRoots{% endblock %}
     </title>
 
+      {% block stylesheets %}
+
+          <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
+          <link rel="stylesheet" href="{{ asset('css/jumbotron.css') }}"/>
+          <link rel="stylesheet" href="{{ asset('css/custom.css') }}"/>
+      {% endblock %}
+
 
 
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
@@ -96,12 +103,6 @@
 
     {% endblock %}
 
-    {% block stylesheets %}
-
-      <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
-      <link rel="stylesheet" href="{{ asset('css/jumbotron.css') }}"/>
-      <link rel="stylesheet" href="{{ asset('css/custom.css') }}"/>
-    {% endblock %}
 
     <!-- Bootstrap core JavaScript
 ================================================== -->

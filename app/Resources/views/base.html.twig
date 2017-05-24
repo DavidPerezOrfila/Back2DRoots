@@ -7,55 +7,12 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <style>
-      .canvas-app-container {
-        background: rgb(255,255,255) no-repeat center url("Games/FrogestJump/splash_image.png");
-        /* A positioned parent for loading visuals */
-        position: relative;
-      }
-      .canvas-app-container:-webkit-full-screen {
-        /* Auto width and height in Safari/Chrome fullscreen. */
-        width: auto;
-        height: auto;
-      }
-
-      .canvas-app-progress {
-        position: absolute;
-        background-color: rgb(245, 245, 245);
-        height: 20px;
-        /* Progress same width as canvas. */
-        width: 1280px;
-        bottom: 0;
-      }
-
-      .canvas-app-progress-bar {
-        font-size: 12px;
-        height: 20px;
-        color: rgb(255, 255, 255);
-        background-color: rgb(30, 100, 234);
-        text-align: center;
-        line-height: 20px;
-      }
-
-      .button {
-        color: #fff;
-        background-color: #1e64ea;
-        border-color: transparent;
-        padding: 10px 20px;
-      }
-
-    </style>
 
     <title>
       {% block title %}Back2DRoots{% endblock %}
     </title>
 
-    {% block stylesheets %}
 
-      <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
-      <link rel="stylesheet" href="{{ asset('css/jumbotron.css') }}"/>
-      <link rel="stylesheet" href="{{ asset('css/custom.css') }}"/>
-    {% endblock %}
 
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 
@@ -122,19 +79,6 @@
               {% include var ~ 'Post/index.html.twig' %}
             {% endblock %}
           </div>
-          <!--<div class="col-xs-4 col-sm-4 col-md-4">
-                    {% block sidebar %}
-                        <!--<div class="container-fluid">
-                            <div class="row margin-bottom-md">
-                                <div>
-
-                                    <a class="btn btn-default" style="font-size:x-large;width: 100%" href="">Sidebar</a>
-                                </div>
-                            </div>
-                        </div>
-
-                    {% endblock %}
-                </div>-->
         </div>
       </div>
       <footer>
@@ -150,6 +94,13 @@
       <!-- Latest compiled JavaScript -->
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    {% endblock %}
+
+    {% block stylesheets %}
+
+      <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
+      <link rel="stylesheet" href="{{ asset('css/jumbotron.css') }}"/>
+      <link rel="stylesheet" href="{{ asset('css/custom.css') }}"/>
     {% endblock %}
 
     <!-- Bootstrap core JavaScript

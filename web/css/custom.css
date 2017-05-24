@@ -29,11 +29,10 @@
 }
 
 .canvas-app-container {
-    background: rgb(255,255,255) no-repeat center url("/images/try_game.png");
+    background: rgb(255,255,255) no-repeat center url("Games/FrogestJump/splash_image.png");
     /* A positioned parent for loading visuals */
     position: relative;
 }
-
 .canvas-app-container:-webkit-full-screen {
     /* Auto width and height in Safari/Chrome fullscreen. */
     width: auto;
@@ -46,7 +45,7 @@
     height: 20px;
     /* Progress same width as canvas. */
     width: 1280px;
-    bottom: 0px;
+    bottom: 0;
 }
 
 .canvas-app-progress-bar {
@@ -66,7 +65,6 @@
 }
 
 
-
 .avatar {
     width: 100px;
 }
@@ -79,6 +77,4 @@
 .btn-basic{
     color: #f0ad4e;
 }
-.lb-md {
-    font-size: 16px;
-}
+

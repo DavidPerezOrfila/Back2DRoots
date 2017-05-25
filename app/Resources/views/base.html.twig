@@ -12,14 +12,12 @@
       {% block title %}Back2DRoots{% endblock %}
     </title>
 
-      {% block stylesheets %}
+    {% block stylesheets %}
 
-          <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
-          <link rel="stylesheet" href="{{ asset('css/jumbotron.css') }}"/>
-          <link rel="stylesheet" href="{{ asset('css/custom.css') }}"/>
-      {% endblock %}
-
-
+      <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
+      <link rel="stylesheet" href="{{ asset('css/jumbotron.css') }}"/>
+      <link rel="stylesheet" href="{{ asset('css/custom.css') }}"/>
+    {% endblock %}
 
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 
@@ -28,8 +26,8 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
+    <nav class="navbar navbar-fixed-top">
+      <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -37,7 +35,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" id="icons" href="#">
+          <a class="navbar-brand brand" id="icons" href="#">
             <span><img src="/icons/joystick.png" width="36" height="36" alt="brand"></span>Back2DRoots</a>&nbsp;
 
         </div>
@@ -46,7 +44,7 @@
         <div class="collapse navbar-collapse" id="navbar">
           <ul class="nav navbar-nav">
             <li class="nav-item">
-              <a class="navbar-brand"  href="{{ path('app_post_index') }}">
+              <a class="navbar-brand" href="{{ path('app_post_index') }}">
                 <span><img src="{{ asset('icons/blinky.png') }}"></span>
                 Home</a>&nbsp;</li>
             <li class="nav-item" id="icons">
@@ -78,7 +76,7 @@
       </ul>
     </div>
 
-    <div class="container-fluid">
+    <div class="container">
       <div class="margin-bottom-md">
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-12">
@@ -102,7 +100,6 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     {% endblock %}
-
 
     <!-- Bootstrap core JavaScript
 ================================================== -->

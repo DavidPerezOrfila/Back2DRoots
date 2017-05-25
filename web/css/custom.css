@@ -20,12 +20,12 @@
     margin-bottom: 30px;
 }
 
-.navbar-inverse .navbar-header .navbar-brand {
+.navbar-header .navbar-brand {
     color: #DDD;
 }
 
-.navbar-inverse .navbar-collapse .navbar-brand {
-    color: #f0ad4e;
+.navbar-collapse .navbar-brand {
+    color: #ec9a29!important;
 }
 
 .canvas-app-container {
@@ -52,14 +52,14 @@
     font-size: 12px;
     height: 20px;
     color: rgb(255, 255, 255);
-    background-color: rgb(30, 100, 234);
+    background-color: #0f8b8d !important;
     text-align: center;
     line-height: 20px;
 }
 
 .button {
     color: #fff;
-    background-color: #1e64ea;
+    background-color: #0f8b8d !important;
     border-color: transparent;
     padding: 10px 20px;
 }
@@ -75,6 +75,55 @@
     height: auto;
 }
 .btn-basic{
-    color: #f0ad4e;
+    color: #ec9a29;
 }
+
+.panel-primary .panel-heading {
+    background-color: #143642!important;
+    border-top-color: #143642;
+    border-right-color: #143642;
+    border-left-color: #143642;
+    border-bottom-color: #143642;
+}
+
+.btn-info{
+    background-color: #0f8b8d !important;
+}
+
+.btn-primary{
+    background-color: #143642!important;
+}
+
+.panel-success .panel-heading {
+    background-color: #0f8b8d !important;
+    color: #dad2d8 !important;
+}
+
+.panel-body{
+    background-color: #dad2d8 !important;
+
+}
+
+.btn-danger{
+    background-color: #a8201a !important;
+}
+
+.paginator{
+    background-color: #dad2d8 !important;
+}
+
+.btn-warning {
+    background-color: #ec9a29 !important;
+}
+
+.btn-success{
+    background-color: #0f8b8d !important;
+}
+
+.navbar-fixed-top{
+    background-color: #143642;
+    color: #ec9a29 !important;
+}
+
+
 

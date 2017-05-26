@@ -11,31 +11,31 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" id="icons" href="#">
-          <span><img src="/icons/joystick.png" width="36" height="36" alt="brand"></span>Back2DRoots</a>&nbsp;
+          <span><img src="/icons/joystick.png" width="34" height="34" alt="brand"></span><b>Back2DRoots</b></a>&nbsp;
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="nav navbar-nav">
           <li class="nav-item">
-            <a class="navbar-brand" href="{{ path('app_post_index') }}">
+            <a class="navbar-brand" id="icons" href="{{ path('app_post_index') }}">
               <span><img src="{{ asset('icons/blinky.png') }}"></span>
-              Home</a>&nbsp;</li>
-          <li class="nav-item" id="icons">
+              <b>Home</b></a>&nbsp;</li>
+          <li class="nav-item" >
             <a class="navbar-brand" href="{{ path('app_usuariosRegistrados_index') }}">
               <span><img src="{{ asset('icons/clyde.png') }}"></span>
-              Usuarios</a>&nbsp;</li>
-          <li class="nav-item" id="icons">
+              <b>Usuarios</b></a>&nbsp;</li>
+          <li class="nav-item">
             <a class="navbar-brand" href="{{ path('app_games_index') }}">
               <span><img src="{{ asset('icons/inky.png') }}"></span>
-              Games</a>&nbsp;</li>
-          <li class="nav-item" id="icons">
+              <b>Games</b></a>&nbsp;</li>
+          <li class="nav-item">
             <form action="{{ path('app_usuariosRegistrados_search') }}" class="navbar-form navbar-left" method="post">
               <div class="form-group">
                 <input type="text" class="form-control" name="search" placeholder="Buscar usuarios">
               </div>
               <span>
-                <button type="submit" class="btn-basic"><img src="{{ asset('icons/pinky.png') }}">
+                <button type="submit" class="btn-success panel-title"><img src="{{ asset('icons/pinky.png') }}">
                   <b>Search</b>
                 </button>
               </span>
@@ -58,10 +58,10 @@
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
           <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h4>Usuarios registrados</h4>
-              <div class="count">
-                  Total de personas:
+            <div class="panel-heading panel-title">
+              <h4><span>Usuarios registrados</span></h4>
+              <div class="count panel-title">
+                  <span>Total de personas: </span>
                   {{ users.getTotalItemCount() }}
               </div>
             </div>
@@ -75,7 +75,7 @@
                   {% endif %}
                     <br>
                     <div class="text-center">
-                        <span>{{ u.username }}</span>
+                        <span><b>{{ u.username }}</b></span>
                         <hr>
                     </div>
 

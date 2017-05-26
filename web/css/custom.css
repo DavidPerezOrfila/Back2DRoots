@@ -57,6 +57,11 @@
     padding: 10px 20px;
 }
 
+#icons{
+    margin-top: 2px;
+
+}
+
 
 .avatar {
     width: 100px;
@@ -120,6 +125,11 @@
     color: #ec9a29 !important;
 }
 
+.dropdown-toggle{
+    background-color: #143642;
+    color: #ec9a29 !important;
+}
+
 @font-face {
     font-family: KameronBold, SansitaOne;
     src: url(/web/fonts/);
@@ -133,10 +143,15 @@
 
 .panel-title{
     font-family: "KameronBold", serif;
-    font-size: 36px;
+    font-size: 40px;
 }
 
 .panel-body{
+    font-family: SansitaOne, sans-serif;
+    font-size: medium;
+}
+
+.panel-footer{
     font-family: SansitaOne, sans-serif;
     font-size: medium;
 }

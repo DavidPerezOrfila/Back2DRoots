@@ -8,6 +8,7 @@
 
 namespace AppBundle\Controller;
 
+
 use AppBundle\Entity\Post;
 use AppBundle\Form\postType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -169,5 +170,50 @@ class postController extends Controller
         $m->flush();
         $this->addFlash('messages', 'Post borrado');
         return $this->redirectToRoute('app_post_index');
+    }
+
+
+    /**
+     * @Route("/postSearch", name="app_post_search")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function postSearchAction(Request $request)
+    {
+        if ($this->isGranted('ROLE_USER')) {
+            $m = $this->getDoctrine()->getManager();
+            $search = $_POST['search'];
+            if($search == null) {
+                $this
+                    ->addFlash('messages', 'Tu búsqueda no ha encontrado ningún resultado!');
+
+                return $this->redirectToRoute('app_post_index');
+            }
+            $repo = $m->getRepository('AppBundle:Post');
+
+            /**
+             * Utilizo la función search creada en el repositorio PostRepository
+             *
+             * */
+            $posts= $repo->postSearch($search);
+
+            /**
+             * @var $paginator \knp\Component\Pager\Paginator
+             */
+            $paginator = $this->get('knp_paginator');
+            $result = $paginator->paginate(
+                $posts,
+                $request->query->getInt('page', 1),
+                4
+            );
+
+            return $this->render(':Post:index.html.twig',
+                [
+                    'posts' => $result,
+                ]
+            );
+        }else{
+            return $this->redirectToRoute('fos_user_registration_register');
+        }
+
     }
 }

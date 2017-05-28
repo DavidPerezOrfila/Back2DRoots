@@ -2,7 +2,7 @@
 
 {% block body %}
   <div>
-    <form method="post" action="{{ action }}" novalidate="novalidate">
+    <form method="post" action="{{ action }}" novalidate="novalidate" enctype="multipart/form-data">
       <!-- para evitar la validacion html5 -->
 
       <div class="btn-primary rounded">{{ form_errors(form.titulo) }}{{ form_label(form.titulo) }}:

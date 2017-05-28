@@ -29,6 +29,19 @@
         </div>
         <div class="panel-body ">
           <span>{{ p.mensaje}}</span>
+
+            {% if p.imageFile == null %}
+                <hr>
+            {% else %}
+                <img src="{{ asset('uploads/media/'~ p.image) }}" class=" img-responsive ">
+            {% endif %}
+            {% if p.adjuntoFile == null %}
+                <hr>
+            {% else %}
+                <a src="{{ asset('uploads/media/'~ p.adjunto) }}" class=" fa fa-paperclip" aria-hidden="true">{{ p-adjunto }}</a>
+            {% endif %}
+
+
           <hr>
           <b>Texto creado:
           </b>

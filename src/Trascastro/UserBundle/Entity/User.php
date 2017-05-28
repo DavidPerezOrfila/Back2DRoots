@@ -187,6 +187,8 @@ class User extends BaseUser
     {
         return parent::getId();
     }
+
+
     public function setImageFile(File $image = null)
     {
         $this->imageFile = $image;

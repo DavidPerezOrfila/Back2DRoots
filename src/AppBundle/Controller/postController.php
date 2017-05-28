@@ -215,5 +215,7 @@ class postController extends Controller
             return $this->redirectToRoute('fos_user_registration_register');
         }
 
+
+
     }
 }

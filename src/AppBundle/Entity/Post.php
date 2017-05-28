@@ -3,6 +3,10 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Post
@@ -10,6 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="post")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PostRepository")
  * @ORM\HasLifecycleCallbacks()
+ * @Vich\Uploadable
  */
 class Post
 {
@@ -48,6 +53,45 @@ class Post
      * @ORM\Column(name="mensaje", type="text")
      */
     private $mensaje;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable= true)
+     * @var string
+     *
+     */
+    private $image;
+
+
+
+    /**
+     * @Assert\File(
+     *     maxSize="1M",
+     *     mimeTypes={"image/png", "image/jpeg", "image/jpeg", "image/gif"},
+     *     maxSizeMessage="Please insert valid image (maxSize= 1MB)"
+     *      )
+     *
+     * @Vich\UploadableField(mapping="media", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
+
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable= true)
+     * @var string
+     *
+     */
+    private $adjunto;
+
+    /**
+     * @Assert\NotBlank(message="Please, upload the attached file as a PDF file or Zip file.")
+     * @Assert\File(
+     *     maxSize="15M",
+     *     mimeTypes={ "application/pdf", "application/x-compressed", "application/zip" })
+     * @Vich\UploadableField(mapping="media", fileNameProperty="adjunto")
+     * @var File
+     */
+    private $adjuntoFile;
 
     /**
      * @var \DateTime
@@ -187,6 +231,35 @@ class Post
 
         return $this;
     }
+
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($image) {
+
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
+
     /**
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Comentarios", mappedBy="post")
@@ -240,7 +313,7 @@ class Post
      *
      * @return Post
      */
-    public function addComentario(\AppBundle\Entity\Comentarios $comentario)
+    public function addComentario(Comentarios $comentario)
     {
         $this->comentario[] = $comentario;
 
@@ -252,8 +325,49 @@ class Post
      *
      * @param \AppBundle\Entity\Comentarios $comentario
      */
-    public function removeComentario(\AppBundle\Entity\Comentarios $comentario)
+    public function removeComentario(Comentarios $comentario)
     {
         $this->comentario->removeElement($comentario);
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAdjunto()
+    {
+        return $this->adjunto;
+    }
+
+    /**
+     * @param mixed $adjunto
+     */
+    public function setAdjunto($adjunto)
+    {
+        $this->adjunto = $adjunto;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAdjuntoFile()
+    {
+        return $this->adjuntoFile;
+    }
+
+    /**
+     * @param mixed $adjuntoFile
+     */
+    public function setAdjuntoFile(File $adjuntoFile= null)
+    {
+        $this->adjuntoFile = $adjuntoFile;
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($adjuntoFile) {
+
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+
 }

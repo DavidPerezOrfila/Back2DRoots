@@ -21,7 +21,6 @@ class usuariosRegistradosController extends BaseController
             $m = $this->getDoctrine()->getManager();
             $repo = $m->getRepository('Trascastro\UserBundle\Entity\User');
             $users = $repo->findBy(array(), array('id' => 'ASC'));
-
             /**
              * @var $paginator \knp\Component\Pager\Paginator
              */

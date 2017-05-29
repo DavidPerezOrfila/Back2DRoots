@@ -132,7 +132,8 @@
 
 @font-face {
     font-family: KameronBold, SansitaOne;
-    src: url(/web/fonts/);
+    src: url(/web/fonts/Kameron-Bold.ttf);
+    src: url(/web/fonts/SansitaOne.ttf);
 
 }
 

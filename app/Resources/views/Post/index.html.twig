@@ -31,14 +31,17 @@
           <span>{{ p.mensaje}}</span>
 
             {% if p.imageFile == null %}
-                <hr>
+                <p></p>
             {% else %}
-                <img src="{{ asset('uploads/media/'~ p.image) }}" class=" img-responsive ">
+                <hr>
+                <img src="{{ asset('uploads/media/'~ p.image) }}" class=" img-responsive "><br>
+              <a href="{{ asset('uploads/media/'~ p.image) }}" aria-hidden="true"><span class="glyphicon glyphicon-paperclip"></span> {{ p.image }}</a>
             {% endif %}
             {% if p.adjuntoFile == null %}
-                <hr>
+                <p></p>
             {% else %}
-                <a src="{{ asset('uploads/media/'~ p.adjunto) }}" class=" fa fa-paperclip" aria-hidden="true">{{ p-adjunto }}</a>
+                <hr>
+                <a href="{{ asset('uploads/media/'~ p.adjunto) }}" class=" fa fa-paperclip" aria-hidden="true"><span class="glyphicon glyphicon-paperclip"></span> {{ p.adjunto }}</a>
             {% endif %}
 
 

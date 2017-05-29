@@ -357,7 +357,7 @@ class Post
     /**
      * @param mixed $adjuntoFile
      */
-    public function setAdjuntoFile(File $adjuntoFile= null)
+    public function setAdjuntoFile(File $adjuntoFile = null)
     {
         $this->adjuntoFile = $adjuntoFile;
         // VERY IMPORTANT:

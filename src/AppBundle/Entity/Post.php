@@ -4,7 +4,6 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -77,14 +76,14 @@ class Post
 
 
     /**
-     * @ORM\Column(type="string", length=255, nullable= true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @var string
      *
      */
     private $adjunto;
 
     /**
-     * @Assert\NotBlank(message="Please, upload the attached file as a PDF file or Zip file.")
+     *
      * @Assert\File(
      *     maxSize="15M",
      *     mimeTypes={ "application/pdf", "application/x-compressed", "application/zip" })
@@ -232,6 +231,9 @@ class Post
         return $this;
     }
 
+    /**
+     * @param File|null $image
+     */
     public function setImageFile(File $image = null)
     {
         $this->imageFile = $image;
@@ -245,16 +247,25 @@ class Post
         }
     }
 
+    /**
+     * @return File
+     */
     public function getImageFile()
     {
         return $this->imageFile;
     }
 
+    /**
+     * @param $image
+     */
     public function setImage($image)
     {
         $this->image = $image;
     }
 
+    /**
+     * @return string
+     */
     public function getImage()
     {
         return $this->image;
@@ -354,8 +365,9 @@ class Post
         return $this->adjuntoFile;
     }
 
+
     /**
-     * @param mixed $adjuntoFile
+     * @param File|null $adjuntoFile
      */
     public function setAdjuntoFile(File $adjuntoFile = null)
     {

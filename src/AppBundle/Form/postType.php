@@ -40,6 +40,7 @@ class postType extends AbstractType
                 'label' => 'Adjunto:',
                 'required' => false,
                 'data_class' => null,
+                'empty_data' => true,
                 'attr' => array(
                     'class' => 'form-file form-control btn-basic'
                 ),

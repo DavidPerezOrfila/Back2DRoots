@@ -3,7 +3,7 @@
 {% block body%}
 
   <div class="panel-group">
-    {% if is_granted('ROLE_USER') %}
+    {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')%}
 
       <form method="post" action="{{ path('app_post_insert') }}">
         <button class="btn-primary btn-md" type="submit" value="submit">Nuevo Post</button>
@@ -29,19 +29,20 @@
         </div>
         <div class="panel-body ">
           <span>{{ p.mensaje}}</span>
-
-            {% if p.imageFile == null %}
-                <p></p>
-            {% else %}
-                <hr>
-                <img src="{{ asset('uploads/media/'~ p.image) }}" class=" img-responsive "><br>
-              <a href="{{ asset('uploads/media/'~ p.image) }}" aria-hidden="true"><span class="glyphicon glyphicon-paperclip"></span> {{ p.image }}</a>
-            {% endif %}
-            {% if p.adjuntoFile == null %}
-                <p></p>
-            {% else %}
-                <hr>
-                <a href="{{ asset('uploads/media/'~ p.adjunto) }}" class=" fa fa-paperclip" aria-hidden="true"><span class="glyphicon glyphicon-paperclip"></span> {{ p.adjunto }}</a>
+            {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
+              {% if p.imageFile == null %}
+                  <p></p>
+              {% else %}
+                  <hr>
+                  <img src="{{ asset('uploads/media/'~ p.image) }}" class=" img-responsive "><br>
+                  <a href="{{ asset('uploads/media/'~ p.image) }}" aria-hidden="true"><span class="glyphicon glyphicon-paperclip"></span> {{ p.image }}</a>
+              {% endif %}
+              {% if p.adjuntoFile == null %}
+                    <hr>
+              {% else %}
+                  <hr>
+                  <a href="{{ asset('uploads/media/'~ p.adjunto) }}" class=" fa fa-paperclip" aria-hidden="true"><span class="glyphicon glyphicon-paperclip"></span> {{ p.adjunto }}</a>
+              {% endif %}
             {% endif %}
 
 

@@ -28,6 +28,7 @@ class postAdmin extends AbstractAdmin
                 'class' => 'Trascastro\UserBundle\Entity\User'
             ))
             ->add('mensaje', 'text')
+            ->add('adjunto', 'file')
 
             ->end()
 
